@@ -1,0 +1,10 @@
+.card {
+  margin: auto;
+  width: 40rem;
+  margin-top: 40px;
+}
+
+#queryBtn {
+  margin-left: 1rem;
+  background-color: #ffa31a;
+}
