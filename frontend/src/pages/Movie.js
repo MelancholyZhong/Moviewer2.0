@@ -1,7 +1,13 @@
 import React from "react";
 
+import MovieCard from "../components/MovieCard";
+
 const Movie = () => {
-  return <h1>Movie</h1>;
+  return (
+    <div>
+      <MovieCard />
+    </div>
+  );
 };
 
 export default Movie;
