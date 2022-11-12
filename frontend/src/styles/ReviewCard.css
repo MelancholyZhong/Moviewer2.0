@@ -1,0 +1,18 @@
+.review-card {
+  justify-self: center;
+  width: 50rem;
+}
+
+.card-header {
+  text-align: left;
+}
+
+.card-text {
+  width: 40rem;
+  margin: auto;
+  text-align: left;
+}
+
+.btn {
+  margin: 1rem;
+}

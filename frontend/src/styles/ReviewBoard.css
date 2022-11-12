@@ -1,0 +1,11 @@
+.card {
+  margin: auto;
+  width: 70rem;
+  margin-top: 40px;
+}
+
+.card-title {
+  font-family: "Tangerine", serif;
+  font-weight: bold;
+  font-size: 3rem;
+}
