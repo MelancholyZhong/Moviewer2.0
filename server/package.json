@@ -4,6 +4,10 @@
   "main": "index.js",
   "author": "yaozhong & aaron leung",
   "license": "MIT",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
   "devDependencies": {
     "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",

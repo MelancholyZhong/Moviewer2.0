@@ -7,7 +7,7 @@ const port = 3001;
 
 const queryRoutes = require("./routes/query-routes");
 
-mongoUtil.connectToClient();
+//mongoUtil.connectToClient();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
