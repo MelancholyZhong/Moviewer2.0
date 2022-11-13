@@ -1,0 +1,5 @@
+{
+  "env": {
+    "URI": "mongodb+srv://zhongyao:SyQ4VrBQT1xuHzGA@cluster0.2b2dd.mongodb.net/?retryWrites=true&w=majority"
+  }
+}
