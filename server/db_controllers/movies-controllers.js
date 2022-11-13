@@ -10,6 +10,7 @@ const DUMMY_MOVIES = [
     star: "Jack Nicholson, Shelley Duvall, Scatman Crothers, Danny Lloyd",
     region: "United States, United Kingdom",
     genre: "psychological horror",
+    rate: 9.2,
   },
 ];
 
@@ -17,4 +18,8 @@ const queryMovieByName = (movie) => {
   return DUMMY_MOVIES[0];
 };
 
-module.exports = { queryMovieByName };
+const queryMovieById = (id) => {
+  return DUMMY_MOVIES[0];
+};
+
+module.exports = { queryMovieByName, queryMovieById };
