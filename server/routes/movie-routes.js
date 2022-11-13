@@ -1,9 +1,9 @@
 const express = require("express");
 
-const { queryMovie } = require("../services/query-service");
+const { getMovie } = require("../services/movie-service");
 
 const router = express.Router();
 
-router.get("/:name", queryMovie);
+router.get("/:movieId", getMovie);
 
 module.exports = router;
