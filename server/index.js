@@ -7,6 +7,7 @@ const port = 3001;
 
 const queryRoutes = require("./routes/query-routes");
 const movieRoutes = require("./routes/movie-routes");
+const reviewRoutes = require("./routes/review-routes");
 
 //mongoUtil.connectToClient();
 
@@ -15,6 +16,7 @@ app.use(bodyParser.json());
 
 app.use("/api/query", queryRoutes);
 app.use("/api/movie", movieRoutes);
+app.use("/api/review", reviewRoutes);
 
 app.listen(port, () => {
   console.log(`Server runing at port ${port}`);

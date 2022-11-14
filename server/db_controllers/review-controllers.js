@@ -21,7 +21,7 @@ const getReviewById = (id) => {
   return DUMMY_REVIEWS[0];
 };
 
-const updateReviewById = (review) => {
+const updateReviewById = (reviewId, review) => {
   return DUMMY_REVIEWS[0];
 };
 
