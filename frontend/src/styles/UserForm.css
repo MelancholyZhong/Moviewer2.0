@@ -1,0 +1,54 @@
+.fullscreen {
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login-screen {
+  background-color: rgba(105, 171, 241, 0.5);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  width: 600px;
+}
+
+.login-title {
+  text-align: center;
+  color: blueviolet;
+}
+
+.form {
+  display: flex;
+  gap: 20px;
+}
+
+.loginButton {
+  padding-top: 5px;
+}
+
+.input-group {
+  padding-bottom: 20px;
+}
+
+.input-group input {
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  display: block;
+  padding: 10px;
+  width: 100%;
+}
+
+.error {
+  color: red;
+}
+
+.loginButton {
+  text-align: center;
+}
+
+label {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
