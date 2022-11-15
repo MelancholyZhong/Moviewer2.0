@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "initMovies": "mongoimport -d Moviewer -c movies --type=csv --headerline  --file ./data/real_1000_movies.csv"
   },
   "devDependencies": {
     "eslint": "^8.27.0",
