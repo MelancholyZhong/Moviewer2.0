@@ -23,7 +23,7 @@ const getMovieReview = (req, res) => {
 };
 
 const updateReview = (req, res) => {
-  const review = updateReviewById(req.body.review);
+  const updatedReview = updateReviewById(req.params.reviewId, req.body.review);
   res.json(updatedReview);
 };
 
