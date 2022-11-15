@@ -1,4 +1,5 @@
 const mongoUtil = require("../mongoUtil");
+const ObjectId = require("mongodb").ObjectId;
 
 const DUMMY_MOVIES = [
   {
@@ -14,12 +15,30 @@ const DUMMY_MOVIES = [
   },
 ];
 
-const queryMovieByName = (movie) => {
-  return DUMMY_MOVIES[0];
+const queryMovieByName = async (movie) => {
+  const database = mongoUtil.getDB();
+  const query = { Name: movie };
+  let foundMovie;
+  try {
+    foundMovie = await database.collection("movies").findOne(query);
+  } catch (err) {
+    res.status(500).send({ msg: err });
+  }
+
+  return foundMovie;
 };
 
-const queryMovieById = (id) => {
-  return DUMMY_MOVIES[0];
+const queryMovieById = async (id) => {
+  const database = mongoUtil.getDB();
+  const query = { _id: ObjectId(id) };
+  let foundMovie;
+  try {
+    foundMovie = await database.collection("movies").findOne(query);
+  } catch (err) {
+    res.status(500).send({ msg: err });
+  }
+
+  return foundMovie;
 };
 
 module.exports = { queryMovieByName, queryMovieById };

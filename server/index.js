@@ -9,7 +9,7 @@ const queryRoutes = require("./routes/query-routes");
 const movieRoutes = require("./routes/movie-routes");
 const reviewRoutes = require("./routes/review-routes");
 
-//mongoUtil.connectToClient();
+mongoUtil.connectToClient();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

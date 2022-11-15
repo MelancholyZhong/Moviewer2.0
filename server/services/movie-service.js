@@ -1,8 +1,8 @@
 const { queryMovieById } = require("../db_controllers/movies-controllers");
 
-const getMovie = (req, res) => {
+const getMovie = async (req, res) => {
   const id = req.params.movieId;
-  const movie = queryMovieById(id);
+  const movie = await queryMovieById(id);
   res.json({ id: id, data: movie });
 };
 
