@@ -1,47 +1,48 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../styles/UserForm.css";
 //import LoginForm from "../components/LoginForm";
 
 const Login = () => {
-  const adminUser = {
-    email: "test@test.com",
-    password: "test123",
-  };
-  const navigate = useNavigate();
-  //const [user, setUser] = useState({ username: "", email: "" });
-  const [credentials, setCredentials] = useState({
-    email: "",
-    password: "",
-  });
+  //const navigate = useNavigate();
+  // Delcare states needed to store input values: email, password
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const submitHandler = (e) => {
-    // Don't want page to re-render
-    e.preventDefault();
-    let login_cred = {
-      email: credentials.email,
-      password: credentials.password,
-    };
-
-    if (
-      login_cred.email === adminUser.email &&
-      login_cred.password === adminUser.password
-    ) {
-      console.log("Logged in");
-      console.log(login_cred);
-      // setUser
-      // setUser({
-      //   username: credentials.username,
-      //   email: credentials.email,
-      // });
-      navigate("/");
-    } else {
-      console.log("Details do not match");
-      setError("Details do not match");
-    }
+  const data = {
+    email: email,
+    password: password,
   };
 
+  // when form is submitted, calls submitHandler where posts data to REST API
+  const submitHandler = async (e) => {
+    console.log(data);
+    //console.log(password);
+    // Prevent page from re-rendering
+    e.preventDefault();
+    try {
+      let res = await fetch("https://localhost3001", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      // Getting response data from backend
+      //let resJson = await redirect.json();
+      // get status value as response from backend.  status 200 means success
+      if (res.status === 200) {
+        setEmail("");
+        setPassword("");
+      } else {
+        setError("Username and password do not match");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  // should the onsubmitHandler go on form? or should it be action
   return (
     <div className="fullscreen">
       <form onSubmit={submitHandler} className="form">
@@ -55,10 +56,8 @@ const Login = () => {
               name="email"
               id="email"
               required={true}
-              onChange={(e) =>
-                setCredentials({ ...credentials, email: e.target.value })
-              }
-              value={credentials.email}
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
             />
           </div>
           <div className="input-group">
@@ -68,10 +67,8 @@ const Login = () => {
               name="password"
               id="password"
               required={true}
-              onChange={(e) =>
-                setCredentials({ ...credentials, password: e.target.value })
-              }
-              value={credentials.password}
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
             />
           </div>
           <div className="loginButton">
@@ -83,9 +80,6 @@ const Login = () => {
             </button>
             <Link to="/signup"> Sign Up </Link>
           </div>
-          {/* <button type="submit" className="loginButton">
-            Login
-          </button> */}
         </div>
       </form>
     </div>
