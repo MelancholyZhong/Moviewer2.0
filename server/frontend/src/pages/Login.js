@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/UserForm.css";
 //import LoginForm from "../components/LoginForm";
 
@@ -9,6 +9,8 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const data = {
     email: email,
@@ -22,7 +24,7 @@ const Login = () => {
     // Prevent page from re-rendering
     e.preventDefault();
     try {
-      let res = await fetch("https://localhost3001", {
+      let res = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,6 +37,7 @@ const Login = () => {
       if (res.status === 200) {
         setEmail("");
         setPassword("");
+        navigate("/dashboard");
       } else {
         setError("Username and password do not match");
       }
