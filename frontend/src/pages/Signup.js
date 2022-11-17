@@ -4,49 +4,59 @@ import "../styles/UserForm.css";
 
 const Signup = () => {
   //const navigate = useNavigate();
-  //const [user, setUser] = useState({ username: "", email: "" });
-  const [credentials, setCredentials] = useState({
-    fname: "",
-    lname: "",
-    email: "",
-    password: "",
-  });
-  //const [error, setError] = useState("");
 
-  const submitHandler = (e) => {
-    // Don't want page to re-render
-    e.preventDefault();
-    let login_cred = {
-      fname: credentials.fname,
-      lname: credentials.lname,
-      email: credentials.email,
-      password: credentials.password,
-    };
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-    console.log(login_cred);
-    // if (
-    //   login_cred.email === adminUser.email &&
-    //   login_cred.password === adminUser.password
-    // ) {
-    //   console.log("Logged in");
-    //   // setUser
-    //   // setUser({
-    //   //   username: credentials.username,
-    //   //   email: credentials.email,
-    //   // });
-    //   navigate("/");
-    // } else {
-    //   console.log("Details do not match");
-    //   setError("Details do not match");
-    // }
+  const data = {
+    fname: fname,
+    lname: lname,
+    email: email,
+    password: password,
   };
-  //{error !== "" ? <div className="error">{error}</div> : ""}
+  // where to use UseEffect
+
+  const submitHandler = async (e) => {
+    // Prevent page from re-rendering
+    e.preventDefault();
+    console.log(data);
+    // console.log(lname);
+    // console.log(email);
+    // console.log(password);
+    try {
+      let res = await fetch("https://localhost3001", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      // Getting response data from backend
+      //let resJson = await redirect.json();
+      // get status value as response from backend.  status 200 means success
+      if (res.status === 200) {
+        setFname("");
+        setLname("");
+        setEmail("");
+        setPassword("");
+      } else {
+        setError("An error occurred");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // should handlesubmit go on button?
   return (
     <div className="fullscreen">
       <form onSubmit={submitHandler} className="form">
         <div className="login-screen">
           <h1 className="login-title">Sign Up</h1>
-
+          {error !== "" ? <div className="error">{error}</div> : ""}
           <div className="input-group">
             <label htmlFor="fname">First Name:</label>
             <input
@@ -54,10 +64,8 @@ const Signup = () => {
               name="fname"
               id="fname"
               required={true}
-              onChange={(e) =>
-                setCredentials({ ...credentials, fname: e.target.value })
-              }
-              value={credentials.fname}
+              onChange={(e) => setFname(e.target.value)}
+              value={fname}
             />
           </div>
           <div className="input-group">
@@ -67,10 +75,8 @@ const Signup = () => {
               name="lname"
               id="lname"
               required={true}
-              onChange={(e) =>
-                setCredentials({ ...credentials, lname: e.target.value })
-              }
-              value={credentials.lname}
+              onChange={(e) => setLname(e.target.value)}
+              value={lname}
             />
           </div>
           <div className="input-group">
@@ -80,10 +86,8 @@ const Signup = () => {
               name="email"
               id="email"
               required={true}
-              onChange={(e) =>
-                setCredentials({ ...credentials, email: e.target.value })
-              }
-              value={credentials.email}
+              onChange={(e) => setEmail(e.target.value)}
+              value={email}
             />
           </div>
           <div className="input-group">
@@ -93,10 +97,8 @@ const Signup = () => {
               name="password"
               id="password"
               required={true}
-              onChange={(e) =>
-                setCredentials({ ...credentials, password: e.target.value })
-              }
-              value={credentials.password}
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
             />
           </div>
           <div className="loginButton">
@@ -108,9 +110,6 @@ const Signup = () => {
             </button>
             <Link to="/login"> Have an account? </Link>
           </div>
-          {/* <button type="submit" className="loginButton">
-              Login
-            </button> */}
         </div>
       </form>
     </div>
