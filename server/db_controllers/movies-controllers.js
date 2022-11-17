@@ -1,5 +1,5 @@
 const mongoUtil = require("../mongoUtil");
-const ObjectId = require("mongodb").ObjectId;
+const { ObjectId } = require("mongodb");
 
 // const DUMMY_MOVIES = [
 //   {

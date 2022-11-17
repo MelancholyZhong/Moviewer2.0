@@ -27,9 +27,7 @@ app.use(
     saveUninitialized: true,
   })
 );
-
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.authenticate("session"));
 
 app.use("/api/query", queryRoutes);
 app.use("/api/movie", movieRoutes);
