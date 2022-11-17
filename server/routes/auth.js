@@ -1,13 +1,13 @@
 const express = require("express");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const db = require("../db");
+//const db = require("../db");
 
 // added today
 const router = express.Router();
 // adding strategy
 // verify call by passport each time you try to authenticate
-const strategy = new new LocalStrategy(function verify(email, password, cb) {
+const strategy = new LocalStrategy(function verify(email, password, cb) {
   console.log("verify", email, password);
   // TODO database code goes in here
   // check in database is email exists
