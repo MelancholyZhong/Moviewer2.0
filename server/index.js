@@ -4,6 +4,7 @@ const mongoUtil = require("./mongoUtil");
 // Added today
 const cookieParser = require("cookie-parser");
 const passport = require("passport");
+const session = require("express-session");
 
 const app = express();
 const port = 3001;
@@ -28,7 +29,17 @@ app.use("/api/review", reviewRoutes);
 app.use("/api/login", loginRoutes);
 // Added today
 app.use("/api/auth", authRoutes);
+app.use(
+  session({
+    secret: secret,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true },
+  })
+);
+//app.use(passport.authenticate("session"));
 
+//
 app.listen(port, () => {
   console.log(`Server runing at port ${port}`);
 });
