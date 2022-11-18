@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "../styles/ReviewCard.css";
 
 const ReviewCard = ({ item, reviewUpdate }) => {
-  const editHandler = () => {};
+  const [content, setContent] = useState(item.content);
+  const [editing, setEditing] = useState(false);
+
+  const editHandler = () => {
+    setEditing(true);
+  };
 
   const deleteHandler = async () => {
     try {
@@ -19,17 +24,58 @@ const ReviewCard = ({ item, reviewUpdate }) => {
     }
   };
 
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      await fetch(`/api/review/${item._id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ content }),
+      });
+      reviewUpdate();
+      setEditing(false);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const changeHandler = (newContent) => {
+    setContent(newContent);
+  };
+
   return (
     <div className="card text-center review-card">
-      <div className="card-header">User Name</div>
+      <div className="card-header">{item.userId}</div>
       <div className="card-body">
-        <p className="card-text">{item.content}</p>
-        <button onClick={editHandler} className="btn btn-primary">
-          Edit
-        </button>
-        <button onClick={deleteHandler} className="btn btn-danger">
-          Delete
-        </button>
+        {!editing && <p className="card-text">{content}</p>}
+        {!editing && (
+          <button onClick={editHandler} className="btn btn-primary">
+            Edit
+          </button>
+        )}
+        {!editing && (
+          <button onClick={deleteHandler} className="btn btn-danger">
+            Delete
+          </button>
+        )}
+        {editing && (
+          <form onSubmit={submitHandler}>
+            <textarea
+              className="form-control"
+              id="movie-review"
+              rows="4"
+              onChange={(e) => {
+                changeHandler(e.target.value);
+              }}
+              value={content}
+            ></textarea>
+            <button type="submit" className="btn btn-success">
+              Post
+            </button>
+          </form>
+        )}
       </div>
     </div>
   );
