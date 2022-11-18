@@ -8,3 +8,7 @@
   margin-left: 1rem;
   background-color: #ffa31a;
 }
+
+.errMsg {
+  color: red;
+}
