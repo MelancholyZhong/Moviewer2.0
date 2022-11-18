@@ -12,7 +12,7 @@ const ReviewBoard = ({ movieId }) => {
     try {
       const rawRes = await fetch(`/api/review/movie/${movieId}`);
       const res = await rawRes.json();
-      setReviews(res.review);
+      setReviews(res.review.reverse());
     } catch (err) {
       console.log(err);
     }
@@ -28,7 +28,7 @@ const ReviewBoard = ({ movieId }) => {
         <h3 className="card-title">Reviews</h3>
         <ReviewBox movieId={movieId} reviewUpdate={fetchReviews} />
         <div>
-          {reviews.reverse().map((item) => {
+          {reviews.map((item) => {
             return (
               <ReviewCard
                 key={item._id}

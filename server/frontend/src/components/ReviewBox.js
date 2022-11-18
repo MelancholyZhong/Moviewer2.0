@@ -4,10 +4,12 @@ import "../styles/ReviewBox.css";
 
 const ReviewBox = ({ movieId, reviewUpdate }) => {
   const defaultReview = { movieId, userId: "melancholyzhong" };
-  const [review, setReview] = useState(defaultReview);
+  const [content, setContent] = useState("");
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    const review = defaultReview;
+    review.content = content;
     try {
       await fetch("/api/review", {
         method: "POST",
@@ -16,7 +18,7 @@ const ReviewBox = ({ movieId, reviewUpdate }) => {
         },
         body: JSON.stringify(review),
       });
-      changeHandler("");
+      setContent("");
       reviewUpdate();
     } catch (err) {
       console.log(err);
@@ -24,9 +26,7 @@ const ReviewBox = ({ movieId, reviewUpdate }) => {
   };
 
   const changeHandler = (content) => {
-    const newReview = review;
-    newReview.content = content;
-    setReview(newReview);
+    setContent(content);
   };
 
   return (
@@ -41,7 +41,7 @@ const ReviewBox = ({ movieId, reviewUpdate }) => {
             onChange={(e) => {
               changeHandler(e.target.value);
             }}
-            value={review.content}
+            value={content}
           ></textarea>
           <button type="submit" className="btn btn-success">
             Post
