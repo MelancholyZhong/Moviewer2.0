@@ -1,16 +1,13 @@
 import React from "react";
-import { LoremIpsum } from "react-lorem-ipsum";
 
 import "../styles/ReviewCard.css";
 
-const ReviewCard = () => {
+const ReviewCard = ({ item }) => {
   return (
     <div className="card text-center review-card">
       <div className="card-header">User Name</div>
       <div className="card-body">
-        <p className="card-text">
-          <LoremIpsum avgSentencesPerParagraph={10} />
-        </p>
+        <p className="card-text">{item.content}</p>
         <a href="#" className="btn btn-primary">
           Edit
         </a>

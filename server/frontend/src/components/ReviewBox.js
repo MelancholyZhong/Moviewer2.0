@@ -2,8 +2,9 @@ import React, { useState } from "react";
 
 import "../styles/ReviewBox.css";
 
-const ReviewBox = ({ movieId }) => {
-  const [review, setReview] = useState({ movieId, userId: "melancholyzhong" });
+const ReviewBox = ({ movieId, reviewUpdate }) => {
+  const defaultReview = { movieId, userId: "melancholyzhong" };
+  const [review, setReview] = useState(defaultReview);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -15,6 +16,8 @@ const ReviewBox = ({ movieId }) => {
         },
         body: JSON.stringify(review),
       });
+      changeHandler("");
+      reviewUpdate(movieId);
     } catch (err) {
       console.log(err);
     }
@@ -38,6 +41,7 @@ const ReviewBox = ({ movieId }) => {
             onChange={(e) => {
               changeHandler(e.target.value);
             }}
+            value={review.content}
           ></textarea>
           <button type="submit" className="btn btn-success">
             Post

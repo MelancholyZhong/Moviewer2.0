@@ -13,7 +13,6 @@ const postReview = async (req, res) => {
     content: req.body.content,
   };
   const createdReview = await createReview(review);
-  console.log(createdReview);
   res.json(createdReview);
 };
 
@@ -24,7 +23,7 @@ const getReview = async (req, res) => {
 
 const getMovieReview = async (req, res) => {
   const review = await getReviewByMovie(req.params.movieId);
-  res.json(review);
+  res.json({ status: 200, review: review });
 };
 
 const updateReview = async (req, res) => {
