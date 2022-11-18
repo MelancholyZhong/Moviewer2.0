@@ -11,7 +11,6 @@ const MovieCard = ({ movieId }) => {
     try {
       const rawRes = await fetch(`/api/movie/${movieId}`);
       const res = await rawRes.json();
-      console.log(res.movie);
       setMovie(res.movie);
     } catch (err) {
       console.log(err);
