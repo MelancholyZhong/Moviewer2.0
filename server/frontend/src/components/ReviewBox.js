@@ -17,7 +17,7 @@ const ReviewBox = ({ movieId, reviewUpdate }) => {
         body: JSON.stringify(review),
       });
       changeHandler("");
-      reviewUpdate(movieId);
+      reviewUpdate();
     } catch (err) {
       console.log(err);
     }

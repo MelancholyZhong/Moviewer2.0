@@ -8,7 +8,7 @@ import ReviewBox from "./ReviewBox";
 const ReviewBoard = ({ movieId }) => {
   const [reviews, setReviews] = useState([]);
 
-  const fetchReviews = async (movieId) => {
+  const fetchReviews = async () => {
     try {
       const rawRes = await fetch(`/api/review/movie/${movieId}`);
       const res = await rawRes.json();
@@ -19,7 +19,7 @@ const ReviewBoard = ({ movieId }) => {
   };
 
   useEffect(() => {
-    fetchReviews(movieId);
+    fetchReviews();
   }, [movieId]);
 
   return (
@@ -28,8 +28,14 @@ const ReviewBoard = ({ movieId }) => {
         <h3 className="card-title">Reviews</h3>
         <ReviewBox movieId={movieId} reviewUpdate={fetchReviews} />
         <div>
-          {reviews.map((item) => {
-            return <ReviewCard item={item}></ReviewCard>;
+          {reviews.reverse().map((item) => {
+            return (
+              <ReviewCard
+                key={item._id}
+                item={item}
+                reviewUpdate={fetchReviews}
+              ></ReviewCard>
+            );
           })}
         </div>
       </div>
