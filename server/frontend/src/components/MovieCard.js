@@ -1,46 +1,62 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "../styles/MovieCard.css";
 
 import Rating from "./Rating";
 
-const MovieCard = () => {
+const MovieCard = ({ movieId }) => {
+  const [movie, setMovie] = useState({});
+
+  const fetchMovie = async (movieId) => {
+    try {
+      const rawRes = await fetch(`/api/movie/${movieId}`);
+      const res = await rawRes.json();
+      console.log(res.movie);
+      setMovie(res.movie);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fetchMovie(movieId);
+  }, [movieId]);
+
   return (
     <div className="card text-center">
       <div className="card-body">
         <div className="row">
           <div className="col-4">
-            <img
-              src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2020/05/21/09/the-shining-2.jpg?quality=75&width=1200&auto=webp"
-              className="img-thumbnail"
-              alt="..."
-            />
+            <img src={movie.PosterLink} className="img-thumbnail" alt="..." />
           </div>
           <div className="col-4">
             <ul className="infoList">
               <li>
-                <b>Title: </b> The Shining
+                <b>Title: </b> {movie.Name}
               </li>
               <li>
-                <b>Year: </b> 1980
+                <b>Year: </b> {movie.DatePublished}
               </li>
               <li>
-                <b>Directed by: </b> Stanley Kubrick
+                <b>Directed by: </b> {movie.Director}
               </li>
               <li>
                 <b>Starring: </b>
-                Jack Nicholson, Shelley Duvall, Scatman Crothers, Danny Lloyd
+                {movie.Actors}
               </li>
               <li>
-                <b>Country/Region: </b> United States, United Kingdom
+                <b>Description </b> {movie.Description}
               </li>
               <li>
-                <b>Genre: </b> psychological horror
+                <b>Genre: </b> {movie.Genres}
+              </li>
+              <li>
+                <b>Duration: </b> {movie.duration}
               </li>
             </ul>
           </div>
           <div className="col-4">
-            <Rating />
+            <Rating value={movie.RatingValue} />
           </div>
         </div>
       </div>

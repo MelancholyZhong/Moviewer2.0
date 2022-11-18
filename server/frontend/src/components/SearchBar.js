@@ -14,7 +14,6 @@ const SearchBar = () => {
     try {
       const rawRes = await fetch(`/api/query/${movieName}`);
       const res = await rawRes.json();
-      console.log(res.movie);
       if (res.status === 200) {
         setNotFound(false);
         navigate(`/movie/${res.movie._id}`);
