@@ -10,8 +10,7 @@ const getUserPassword = async (email) => {
   } catch (err) {
     res.status(500).send({ msg: err });
   }
-
   return user;
 };
-
+// returning user
 module.exports = { getUserPassword };

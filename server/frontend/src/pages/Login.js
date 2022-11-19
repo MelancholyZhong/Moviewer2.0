@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import "../styles/UserForm.css";
+import { MovieContext } from "../context/context";
 //import LoginForm from "../components/LoginForm";
 
 const Login = () => {
+  //const { isLoggedIn, setIsLoggedIn } = useContext(MovieContext);
+  const { setIsLoggedIn } = useContext(MovieContext);
   //const navigate = useNavigate();
   // Delcare states needed to store input values: email, password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  //const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -24,28 +29,37 @@ const Login = () => {
     // Prevent page from re-rendering
     e.preventDefault();
     try {
-      let res = await fetch("/api/login", {
+      let userData = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
+      console.log("userData1", userData);
       // Getting response data from backend
       //let resJson = await redirect.json();
       // get status value as response from backend.  status 200 means success
-      if (res.status === 200) {
+      const res = await userData.json();
+  
+      console.log("//", JSON.stringify(res.isLoggedIn));
+      if (res.isLoggedIn) {
         setEmail("");
         setPassword("");
+        setIsLoggedIn(true);
+        // want to show alert
+        //setMessage(res.message);
+        //console.log(message);
         navigate("/dashboard");
       } else {
-        setError("Username and password do not match");
+        console.log("not ok");
+        setError(res.message);
       }
     } catch (err) {
       console.log(err);
     }
   };
-  // should the onsubmitHandler go on form? or should it be action
+
   return (
     <div className="fullscreen">
       <form onSubmit={submitHandler} className="form">

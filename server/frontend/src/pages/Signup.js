@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+//import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/UserForm.css";
 
 const Signup = () => {
@@ -10,6 +11,7 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  //const [message, setMessage] = useState("");
 
   const data = {
     fname: fname,
@@ -18,7 +20,7 @@ const Signup = () => {
     password: password,
   };
   // where to use UseEffect
-
+  const navigate = useNavigate();
   const submitHandler = async (e) => {
     // Prevent page from re-rendering
     e.preventDefault();
@@ -27,7 +29,7 @@ const Signup = () => {
     // console.log(email);
     // console.log(password);
     try {
-      let res = await fetch("https://localhost3001", {
+      let userData = await fetch("/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,13 +39,18 @@ const Signup = () => {
       // Getting response data from backend
       //let resJson = await redirect.json();
       // get status value as response from backend.  status 200 means success
-      if (res.status === 200) {
+      //const res = await userData.json;
+      const res = await userData.json();
+      console.log(res);
+      if (res.isCreated) {
         setFname("");
         setLname("");
         setEmail("");
         setPassword("");
+        alert(res.message);
+        navigate("/login");
       } else {
-        setError("An error occurred");
+        setError(res.message);
       }
     } catch (err) {
       console.log(err);

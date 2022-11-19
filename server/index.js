@@ -12,6 +12,8 @@ const queryRoutes = require("./routes/query-routes");
 const movieRoutes = require("./routes/movie-routes");
 const reviewRoutes = require("./routes/review-routes");
 const loginRoutes = require("./routes/login-routes");
+// adding register
+const registerRoutes = require("./routes/register-routes");
 
 mongoUtil.connectToClient();
 
@@ -28,13 +30,21 @@ app.use(
   })
 );
 
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+// //testing
+// app.use((req, res, next) => {
+//   console.log(req.session);
+//   console.log(req.user);
+//   next();
+// });
 
 app.use("/api/query", queryRoutes);
 app.use("/api/movie", movieRoutes);
 app.use("/api/review", reviewRoutes);
 app.use("/api/login", loginRoutes);
+app.use("/api/register", registerRoutes);
 
 //
 app.listen(port, () => {
