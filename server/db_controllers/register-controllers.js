@@ -1,6 +1,6 @@
 const mongoUtil = require("../mongoUtil");
-
-const registerUser = async (req, res) => {
+// got rid of res
+const registerUser = async (req) => {
   const database = mongoUtil.getDB();
   const email = req.email;
   const fname = req.fname;

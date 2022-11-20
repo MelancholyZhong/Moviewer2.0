@@ -15,7 +15,7 @@ const signUp = async (req, res) => {
     message = "Account successfully created!  Redirecting to login";
   } else {
     isCreated = false;
-    message = "Account already exists";
+    message = "Account with email already exists";
   }
   res.json({ isCreated: isCreated, message: message });
   //   console.log(user);
