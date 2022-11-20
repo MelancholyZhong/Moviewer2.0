@@ -1,11 +1,17 @@
 const express = require("express");
 
-const { authenticateUser } = require("../services/login-service");
+const {
+  authenticateUser,
+  currentUser,
+  logout,
+} = require("../services/login-service");
 
 const router = express.Router();
 
 router.post("/", authenticateUser);
 
-//router.get("/", authenticateUser);
+router.get("/", currentUser);
+
+router.get("/logout", logout);
 
 module.exports = router;

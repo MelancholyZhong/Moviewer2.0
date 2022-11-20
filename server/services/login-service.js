@@ -11,10 +11,11 @@ const authenticateUser = async (req, res) => {
   console.log(user);
   if (!user || user.password !== inputPassword) {
     isLoggedIn = false;
-    message = " Credentials do not match.  Please check your email or password.";
+    message =
+      " Credentials do not match.  Please check your email or password.";
   } else {
     isLoggedIn = true;
-    req.session.user = { user: email};
+    req.session.user = email;
     //console.log(req.session.user);
     message = "Login Success!";
   }
@@ -22,6 +23,21 @@ const authenticateUser = async (req, res) => {
   res.json({ isLoggedIn: isLoggedIn, message: message });
 };
 
+const currentUser = (req, res) => {
+  if (!req.session.user) {
+    res.json({ status: 404 });
+  } else {
+    res.json({ status: 200, user: req.session.user });
+  }
+};
+
+const logout = (req, res) => {
+  req.session.user = null;
+  res.json({ status: 200, message: "Success fully logged out!" });
+};
+
 module.exports = {
   authenticateUser,
+  currentUser,
+  logout,
 };
