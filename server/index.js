@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, "frontend/build")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+
 // app.use(
 //   session({
 //     secret: "v me 50",
@@ -47,6 +48,7 @@ app.use((req, res, next) => {
   console.log(req.session.user);
   next();
 });
+
 
 app.use("/api/query", queryRoutes);
 app.use("/api/movie", movieRoutes);
