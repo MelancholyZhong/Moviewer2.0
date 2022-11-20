@@ -1,15 +1,5 @@
 const mongoUtil = require("../mongoUtil");
 const { ObjectId } = require("mongodb");
-const { query } = require("express");
-
-const DUMMY_REVIEWS = [
-  {
-    id: "192823",
-    userId: "112344",
-    movieId: "889988",
-    content: "I like shining",
-  },
-];
 
 const createReview = async (review) => {
   const db = mongoUtil.getDB();
