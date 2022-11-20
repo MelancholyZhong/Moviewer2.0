@@ -1,58 +1,55 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
+//import { Link, useNavigate } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
-//import { Link } from "react-router-dom";
 import "../styles/UserForm.css";
-import { MovieContext } from "../context/context";
-//import LoginForm from "../components/LoginForm";
 
-const Login = () => {
-  //const { isLoggedIn, setIsLoggedIn } = useContext(MovieContext);
-  const { setIsLoggedIn } = useContext(MovieContext);
+const Signup = () => {
   //const navigate = useNavigate();
-  // Delcare states needed to store input values: email, password
+
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   //const [message, setMessage] = useState("");
 
-  const navigate = useNavigate();
-
   const data = {
+    fname: fname,
+    lname: lname,
     email: email,
     password: password,
   };
-
-  // when form is submitted, calls submitHandler where posts data to REST API
+  // where to use UseEffect
+  const navigate = useNavigate();
   const submitHandler = async (e) => {
-    console.log(data);
-    //console.log(password);
     // Prevent page from re-rendering
     e.preventDefault();
+    console.log(data);
+    // console.log(lname);
+    // console.log(email);
+    // console.log(password);
     try {
-      let userData = await fetch("/api/login", {
+      let userData = await fetch("/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
-      console.log("userData1", userData);
       // Getting response data from backend
       //let resJson = await redirect.json();
       // get status value as response from backend.  status 200 means success
+      //const res = await userData.json;
       const res = await userData.json();
-  
-      console.log("//", JSON.stringify(res.isLoggedIn));
-      if (res.isLoggedIn) {
+      console.log(res);
+      if (res.isCreated) {
+        setFname("");
+        setLname("");
         setEmail("");
         setPassword("");
-        setIsLoggedIn(true);
-        // want to show alert
-        //setMessage(res.message);
-        //console.log(message);
-        navigate("/dashboard");
+        alert(res.message);
+        navigate("/login");
       } else {
-        console.log("not ok");
         setError(res.message);
       }
     } catch (err) {
@@ -60,12 +57,35 @@ const Login = () => {
     }
   };
 
+  // should handlesubmit go on button?
   return (
     <div className="fullscreen">
       <form onSubmit={submitHandler} className="form">
         <div className="login-screen">
-          <h1 className="login-title">Login</h1>
+          <h1 className="login-title">Sign Up</h1>
           {error !== "" ? <div className="error">{error}</div> : ""}
+          <div className="input-group">
+            <label htmlFor="fname">First Name:</label>
+            <input
+              type="text"
+              name="fname"
+              id="fname"
+              required={true}
+              onChange={(e) => setFname(e.target.value)}
+              value={fname}
+            />
+          </div>
+          <div className="input-group">
+            <label htmlFor="lname">Last Name:</label>
+            <input
+              type="text"
+              name="lname"
+              id="lname"
+              required={true}
+              onChange={(e) => setLname(e.target.value)}
+              value={lname}
+            />
+          </div>
           <div className="input-group">
             <label htmlFor="email">Email:</label>
             <input
@@ -93,13 +113,13 @@ const Login = () => {
               type="submit"
               className="btn btn-primary btn-rounded btn-block"
             >
-              Sign In
+              Sign Up
             </button>
-            <Link to="/signup"> Sign Up </Link>
+            <Link to="/login"> Have an account? </Link>
           </div>
         </div>
       </form>
     </div>
   );
 };
-export default Login;
+export default Signup;

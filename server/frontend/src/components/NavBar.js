@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { MovieContext } from "../context/context";
 import "../styles/NavBar.css";
 
 const NavBar = () => {
+  const { isLoggedIn } = useContext(MovieContext);
   return (
     <nav className="navbar  navbar-expand-md">
       <div className="container-fluid">
@@ -22,9 +23,18 @@ const NavBar = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link to="./login" className="nav-link">
+            {isLoggedIn ? (
+              <Link to="./login" className="nav-link">
+                Logout
+              </Link>
+            ) : (
+              <Link to="./login" className="nav-link">
+                Login
+              </Link>
+            )}
+            {/* <Link to="./login" className="nav-link">
               Login
-            </Link>
+            </Link> */}
           </li>
         </ul>
       </div>
