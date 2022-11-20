@@ -55,7 +55,7 @@ const MovieCard = ({ movieId }) => {
             </ul>
           </div>
           <div className="col-4">
-            <Rating value={movie.RatingValue} />
+            <Rating value={movie.RatingValue} movieId={movieId} />
           </div>
         </div>
       </div>

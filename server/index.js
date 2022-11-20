@@ -20,6 +20,7 @@ const queryRoutes = require("./routes/query-routes");
 const movieRoutes = require("./routes/movie-routes");
 const reviewRoutes = require("./routes/review-routes");
 const loginRoutes = require("./routes/login-routes");
+const listRoutes = require("./routes/list-routes");
 // adding register
 const registerRoutes = require("./routes/register-routes");
 
@@ -45,6 +46,7 @@ app.use("/api/movie", movieRoutes);
 app.use("/api/review", reviewRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/register", registerRoutes);
+app.use("/api/list", listRoutes);
 
 //
 app.listen(port, () => {
