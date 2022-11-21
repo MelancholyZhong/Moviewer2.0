@@ -7,7 +7,7 @@ import { MovieContext } from "../context/context";
 
 const Login = () => {
   //const { isLoggedIn, setIsLoggedIn } = useContext(MovieContext);
-  const { setIsLoggedIn } = useContext(MovieContext);
+  const { setIsLoggedIn, setUserId } = useContext(MovieContext);
   //const navigate = useNavigate();
   // Delcare states needed to store input values: email, password
   const [email, setEmail] = useState("");
@@ -44,6 +44,7 @@ const Login = () => {
   
       console.log("//", JSON.stringify(res.isLoggedIn));
       if (res.isLoggedIn) {
+        setUserId(email);
         setEmail("");
         setPassword("");
         setIsLoggedIn(true);

@@ -12,4 +12,8 @@ const addToWishList = async (req, res) => {
   res.status(200).json({ message: "added to wish list" });
 };
 
+// const getFavList = async (req, res) => {
+//   const { userId } = req.body;
+//   const favoriteList = 
+// }
 module.exports = { addToFavList, addToWishList };
