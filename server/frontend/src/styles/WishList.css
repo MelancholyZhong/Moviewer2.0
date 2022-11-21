@@ -1,0 +1,22 @@
+.posterSize {
+  width: 17rem;
+  display: flex;
+}
+
+.movie-row > .row {
+  overflow-x: auto;
+  flex-wrap: nowrap;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 33.33%;
+  padding: 5px;
+}
+
+.button-align {
+  text-align: center;
+}
