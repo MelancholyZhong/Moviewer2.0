@@ -1,4 +1,4 @@
-// Aaron Leung 
+// Aaron Leung
 import React, { useState, useEffect, useContext } from "react";
 import { MovieContext } from "../context/context";
 import "../styles/WishList.css";
@@ -6,7 +6,6 @@ import "../styles/WishList.css";
 import PropTypes from "prop-types";
 
 const WishList = ({ list, updateList }) => {
-
   const [movies, setMovies] = useState([]);
   const { userId } = useContext(MovieContext);
 
@@ -14,14 +13,17 @@ const WishList = ({ list, updateList }) => {
   const getMovie = async (movieId) => {
     const rawRes = await fetch(`/api/movie/${movieId}`);
     const res = await rawRes.json();
-    setMovies((movies) => [...movies, res.movie]);
+    return res.movie;
   };
 
   useEffect(() => {
-    const fetchMovies = () => {
-      list.map(async (movieId) => {
-        await getMovie(movieId);
-      });
+    const fetchMovies = async () => {
+      const promises = await Promise.all(
+        list.map((movieId) => {
+          return getMovie(movieId);
+        })
+      );
+      setMovies(promises);
     };
     fetchMovies();
   }, [list]);
@@ -50,7 +52,7 @@ const WishList = ({ list, updateList }) => {
       <div className="movie-row">
         <div className="row">
           {movies.map((movie) => (
-            <div className="column">
+            <div className="column" key={movie._id}>
               <img
                 src={movie.PosterLink}
                 className="posterSize"
