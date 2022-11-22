@@ -30,12 +30,13 @@ const getList = async (listName, userId) => {
   }
 };
 
+// Aaron Leung
 const removeMovie = async (listName, userId, movieId) => {
   const database = mongoUtil.getDB();
   const query = { userId: userId };
   try {
     const list = await database.collection(listName);
-    await list.update(query, { $pull: { list: movieId } });
+    await list.updateOne(query, { $pull: { list: movieId } });
   } catch (err) {
     console.log(err);
   }

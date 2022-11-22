@@ -54,4 +54,5 @@ const NavBar = () => {
   );
 };
 
+NavBar.prototype = {};
 export default NavBar;

@@ -1,21 +1,32 @@
+// Aaron Leung and Yao Zhong
 import React, { useEffect, useState, useContext } from "react";
 import { MovieContext } from "../context/context";
 import "../styles/FavoriteList.css";
 import PropTypes from "prop-types";
 
-// return will return a list of movies
-// movie.Poster comes from the movie object
 
 const FavoriteList = ({ list, updateList }) => {
   const [movies, setMovies] = useState([]);
   const { userId } = useContext(MovieContext);
 
+
+  // Yao
   const getMovie = async (movieId) => {
     const rawRes = await fetch(`/api/movie/${movieId}`);
     const res = await rawRes.json();
     setMovies((movies) => [...movies, res.movie]);
   };
 
+  useEffect(() => {
+    const fetchMovies = () => {
+      list.map(async (movieId) => {
+        await getMovie(movieId);
+      });
+    };
+    fetchMovies();
+  }, [list, removeMovie]);
+
+  // Aaron Leung
   const removeMovie = async (movieId) => {
     const data = { userId: userId, movieId: movieId };
     try {
@@ -41,6 +52,7 @@ const FavoriteList = ({ list, updateList }) => {
     fetchMovies();
   }, [list]);
 
+ // Aaron Leung
   return (
     <>
       <div className="movie-row">
