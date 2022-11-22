@@ -32,22 +32,13 @@ const Login = () => {
       });
       console.log("userData1", userData);
       const res = await userData.json();
-<<<<<<< HEAD
       // if user is logged in
-=======
-
-      console.log("//", JSON.stringify(res.isLoggedIn));
->>>>>>> 15e27ed8de6b707f323b613fc63be7b8843359a0
       if (res.isLoggedIn) {
         setUserId(email);
         setEmail("");
         setPassword("");
         setIsLoggedIn(true);
-<<<<<<< HEAD
-        navigate("/dashboard");
-=======
         navigate(`/dashboard/${email}`);
->>>>>>> 15e27ed8de6b707f323b613fc63be7b8843359a0
       } else {
         setError(res.message);
       }

@@ -31,18 +31,18 @@ const FavoriteList = ({ list }) => {
       <div className="movie-row">
         <div className="row">
           {movies.map((movie) => (
-            // <div className="column">
-            //   <img
-            //     src={movie.PosterLink}
-            //     className="posterSize"
-            //     alt="image of movie"
-            //   ></img>
-            //   <div className="button-align">
-            //     <button className="btn btn-success btn-rounded btn-block">
-            //       Remove
-            //     </button>
-            //   </div>
-            // </div>
+            <div className="column">
+              <img
+                src={movie.PosterLink}
+                className="posterSize"
+                alt="image of movie"
+              ></img>
+              <div className="button-align">
+                <button className="btn btn-success btn-rounded btn-block">
+                  Remove
+                </button>
+              </div>
+            </div>
           ))}
         </div>
       </div>
