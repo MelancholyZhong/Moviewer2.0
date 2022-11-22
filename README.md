@@ -16,7 +16,7 @@ Sign up:
 ![sign-up](https://user-images.githubusercontent.com/97815716/203132497-5987515e-31c0-4569-91fd-948178311069.png)
 
 Dashboard:
-![refill_page](https://user-images.githubusercontent.com/97815716/199089687-c2fb1dca-34b0-4314-8c89-2b857a1a164c.png)
+![dashboard](https://user-images.githubusercontent.com/97815716/203275926-ded885c8-1733-4f0e-8492-fc49b6e9041d.png)
 
 Movie Profile:
 ![movie-profile](https://user-images.githubusercontent.com/97815716/203132047-d646d465-05a8-4a34-8178-60feb19c6859.png)
