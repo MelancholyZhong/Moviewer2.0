@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { MovieContext } from "../context/context";
 import "../styles/FavoriteList.css";
 
 // return will return a list of movies
@@ -6,13 +7,12 @@ import "../styles/FavoriteList.css";
 
 const FavoriteList = ({ list }) => {
   const [movies, setMovies] = useState([]);
-
+  const { userId } = useContext(MovieContext);
 
   const getMovie = async (movieId) => {
     const rawRes = await fetch(`/api/movie/${movieId}`);
     const res = await rawRes.json();
     setMovies((movies) => [...movies, res.movie]);
-
   };
 
   useEffect(() => {
@@ -22,7 +22,23 @@ const FavoriteList = ({ list }) => {
       });
     };
     fetchMovies();
-  }, [list]);
+  }, [list, removeMovie]);
+
+  const removeMovie = async (movieId) => {
+    const data = { userId: userId, movieId: movieId};
+    try {
+      await fetch("/api/list/removeFav", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    } catch (err) {
+      console.log(err);
+    }
+    return;
+  };
 
   return (
     <>
@@ -38,7 +54,10 @@ const FavoriteList = ({ list }) => {
                   alt="image of movie"
                 ></img>
                 <div className="button-align">
-                  <button className="btn btn-success btn-rounded btn-block">
+                  <button
+                    onClick={()=>{removeMovie(movie._id);}}
+                    className="btn btn-success btn-rounded btn-block"
+                  >
                     Remove
                   </button>
                 </div>
