@@ -113,4 +113,6 @@ const Signup = () => {
     </div>
   );
 };
+
+Signup.propTypes = {};
 export default Signup;

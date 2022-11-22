@@ -1,0 +1,17 @@
+.card.suggestion {
+  margin: auto;
+  justify-self: center;
+  width: 60rem;
+  margin-top: 40px;
+}
+
+.img-thumbnail {
+  width: 25rem;
+}
+
+.infoList {
+  text-align: left;
+  margin-top: 2rem;
+  list-style: none;
+  float: left;
+}

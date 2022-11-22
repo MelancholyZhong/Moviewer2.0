@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { MovieContext } from "../context/context";
 import "../styles/FavoriteList.css";
+import PropTypes from "prop-types";
 
 // return will return a list of movies
 // movie.Poster comes from the movie object
@@ -8,6 +9,7 @@ import "../styles/FavoriteList.css";
 const FavoriteList = ({ list }) => {
   const [movies, setMovies] = useState([]);
   const { userId } = useContext(MovieContext);
+
 
   const getMovie = async (movieId) => {
     const rawRes = await fetch(`/api/movie/${movieId}`);
@@ -68,6 +70,10 @@ const FavoriteList = ({ list }) => {
       </div>
     </>
   );
+};
+
+FavoriteList.propTypes = {
+  list: PropTypes.array,
 };
 
 export default FavoriteList;

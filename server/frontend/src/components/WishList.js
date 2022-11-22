@@ -2,9 +2,11 @@ import React, { useState, useEffect, useContext } from "react";
 import { MovieContext } from "../context/context";
 import "../styles/WishList.css";
 
+import PropTypes from "prop-types";
+
 // return will return a list of movies
 // movie.Poster comes from the movie object
-const FavoriteList = ({ list }) => {
+const WishList = ({ list }) => {
   const [movies, setMovies] = useState([]);
   const { userId } = useContext(MovieContext);
 
@@ -68,4 +70,8 @@ const FavoriteList = ({ list }) => {
   );
 };
 
-export default FavoriteList;
+WishList.propTypes = {
+  list: PropTypes.array,
+};
+
+export default WishList;

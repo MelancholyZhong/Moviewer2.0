@@ -1,29 +1,14 @@
-import React, { useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 
-import "../styles/MovieCard.css";
+import "../styles/SuggestionCard.css";
 
 import Rating from "./Rating";
 
-const MovieCard = ({ movieId }) => {
-  const [movie, setMovie] = useState({});
+import PropTypes from "prop-types";
 
-  const fetchMovie = async (movieId) => {
-    try {
-      const rawRes = await fetch(`/api/movie/${movieId}`);
-      const res = await rawRes.json();
-      setMovie(res.movie);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    fetchMovie(movieId);
-  }, [movieId]);
-
+const SuggestionCard = ({ movie }) => {
   return (
-    <div className="card text-center">
+    <div className="card text-center suggestion">
       <div className="card-body">
         <div className="row">
           <div className="col-4">
@@ -56,7 +41,7 @@ const MovieCard = ({ movieId }) => {
             </ul>
           </div>
           <div className="col-4">
-            <Rating value={movie.RatingValue} movieId={movieId} />
+            <Rating value={movie.RatingValue} movieId={movie._id} />
           </div>
         </div>
       </div>
@@ -64,8 +49,8 @@ const MovieCard = ({ movieId }) => {
   );
 };
 
-MovieCard.propTypes = {
-  movieId: PropTypes.string,
+SuggestionCard.propTypes = {
+  movie: PropTypes.object,
 };
 
-export default MovieCard;
+export default SuggestionCard;

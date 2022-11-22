@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import "../styles/ReviewCard.css";
 
+import PropTypes from "prop-types";
+
 const ReviewCard = ({ item, reviewUpdate }) => {
   const [content, setContent] = useState(item.content);
   const [editing, setEditing] = useState(false);
@@ -79,6 +81,11 @@ const ReviewCard = ({ item, reviewUpdate }) => {
       </div>
     </div>
   );
+};
+
+ReviewCard.propTypes = {
+  item: PropTypes.object,
+  reviewUpdate: PropTypes.func,
 };
 
 export default ReviewCard;

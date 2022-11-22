@@ -1,8 +1,10 @@
 const express = require("express");
 
-const { queryMovie } = require("../services/query-service");
+const { queryMovie, getTops } = require("../services/query-service");
 
 const router = express.Router();
+
+router.get("/tops", getTops);
 
 router.get("/:name", queryMovie);
 
