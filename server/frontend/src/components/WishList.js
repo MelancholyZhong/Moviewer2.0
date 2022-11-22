@@ -5,7 +5,8 @@ import "../styles/WishList.css";
 
 import PropTypes from "prop-types";
 
-const WishList = ({ list }) => {
+const WishList = ({ list, updateList }) => {
+
   const [movies, setMovies] = useState([]);
   const { userId } = useContext(MovieContext);
 
@@ -36,6 +37,7 @@ const WishList = ({ list }) => {
         },
         body: JSON.stringify(data),
       });
+      updateList();
     } catch (err) {
       console.log(err);
     }

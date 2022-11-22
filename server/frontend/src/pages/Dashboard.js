@@ -12,6 +12,7 @@ const Dashboard = () => {
   // Yao
   const fetchList = async () => {
     const resRaw = await fetch(`/api/list/${userId}`);
+    console.log("been called");
     if (resRaw.ok) {
       const res = await resRaw.json();
       setFavList(res.favList ? res.favList : []);
@@ -21,7 +22,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     fetchList();
-  }, []);
+  }, [userId]);
 
   // Aaron Leung
   return (
@@ -30,11 +31,11 @@ const Dashboard = () => {
       <div>
         <div>
           <h2>Favorites List</h2>
-          <FavoriteList list={favList} />
+          <FavoriteList list={favList} updateList={fetchList} />
         </div>
         <div>
           <h2>To Watch List</h2>
-          <WishList list={wishList} />
+          <WishList list={wishList} updateList={fetchList} />
         </div>
       </div>
     </div>

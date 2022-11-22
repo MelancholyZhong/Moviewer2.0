@@ -5,9 +5,10 @@ import "../styles/FavoriteList.css";
 import PropTypes from "prop-types";
 
 
-const FavoriteList = ({ list }) => {
+const FavoriteList = ({ list, updateList }) => {
   const [movies, setMovies] = useState([]);
   const { userId } = useContext(MovieContext);
+
 
   // Yao
   const getMovie = async (movieId) => {
@@ -27,7 +28,7 @@ const FavoriteList = ({ list }) => {
 
   // Aaron Leung
   const removeMovie = async (movieId) => {
-    const data = { userId: userId, movieId: movieId};
+    const data = { userId: userId, movieId: movieId };
     try {
       await fetch("/api/list/removeFav", {
         method: "POST",
@@ -36,13 +37,22 @@ const FavoriteList = ({ list }) => {
         },
         body: JSON.stringify(data),
       });
+      updateList();
     } catch (err) {
       console.log(err);
     }
-    return;
   };
 
-  // Aaron Leung
+  useEffect(() => {
+    const fetchMovies = () => {
+      list.map(async (movieId) => {
+        await getMovie(movieId);
+      });
+    };
+    fetchMovies();
+  }, [list]);
+
+ // Aaron Leung
   return (
     <>
       <div className="movie-row">
@@ -58,7 +68,9 @@ const FavoriteList = ({ list }) => {
                 ></img>
                 <div className="button-align">
                   <button
-                    onClick={()=>{removeMovie(movie._id);}}
+                    onClick={() => {
+                      removeMovie(movie._id);
+                    }}
                     className="btn btn-success btn-rounded btn-block"
                   >
                     Remove
@@ -75,6 +87,7 @@ const FavoriteList = ({ list }) => {
 
 FavoriteList.propTypes = {
   list: PropTypes.array,
+  updateList: PropTypes.func,
 };
 
 export default FavoriteList;
