@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "cd frontend && yarn install && yarn build",
   "builds": [
     {
       "src": "index.js",

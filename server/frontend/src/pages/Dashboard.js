@@ -12,11 +12,10 @@ const Dashboard = () => {
   // Yao
   const fetchList = async () => {
     const resRaw = await fetch(`/api/list/${userId}`);
-    console.log("been called");
     if (resRaw.ok) {
       const res = await resRaw.json();
-      setFavList(res.favList ? res.favList : []);
-      setWishList(res.wishList ? res.wishList : []);
+      setFavList(res.favList);
+      setWishList(res.wishList);
     }
   };
 
@@ -43,4 +42,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-

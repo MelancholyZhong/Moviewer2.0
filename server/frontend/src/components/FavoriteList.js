@@ -12,17 +12,20 @@ const FavoriteList = ({ list, updateList }) => {
   const getMovie = async (movieId) => {
     const rawRes = await fetch(`/api/movie/${movieId}`);
     const res = await rawRes.json();
-    setMovies((movies) => [...movies, res.movie]);
+    return res.movie;
   };
 
   useEffect(() => {
-    const fetchMovies = () => {
-      list.map(async (movieId) => {
-        await getMovie(movieId);
-      });
+    const fetchMovies = async () => {
+      const promises = await Promise.all(
+        list.map((movieId) => {
+          return getMovie(movieId);
+        })
+      );
+      setMovies(promises);
     };
     fetchMovies();
-  }, [list, removeMovie]);
+  }, [list]);
 
   // Aaron Leung
   const removeMovie = async (movieId) => {
@@ -41,24 +44,14 @@ const FavoriteList = ({ list, updateList }) => {
     }
   };
 
-  useEffect(() => {
-    const fetchMovies = () => {
-      list.map(async (movieId) => {
-        await getMovie(movieId);
-      });
-    };
-    fetchMovies();
-  }, [list]);
-
   // Aaron Leung
   return (
     <>
       <div className="movie-row">
         <div className="row">
           {movies.map((movie) => {
-            console.log(movie);
             return (
-              <div className="column">
+              <div className="column" key={movie._id}>
                 <img
                   src={movie.PosterLink}
                   className="posterSize"
