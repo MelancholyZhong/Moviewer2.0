@@ -37,21 +37,15 @@ const Login = () => {
         body: JSON.stringify(data),
       });
       console.log("userData1", userData);
-      // Getting response data from backend
-      //let resJson = await redirect.json();
-      // get status value as response from backend.  status 200 means success
       const res = await userData.json();
-  
+
       console.log("//", JSON.stringify(res.isLoggedIn));
       if (res.isLoggedIn) {
         setUserId(email);
         setEmail("");
         setPassword("");
         setIsLoggedIn(true);
-        // want to show alert
-        //setMessage(res.message);
-        //console.log(message);
-        navigate("/dashboard");
+        navigate(`/dashboard/${email}`);
       } else {
         console.log("not ok");
         setError(res.message);

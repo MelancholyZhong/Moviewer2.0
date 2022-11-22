@@ -19,6 +19,24 @@ const FavoriteList = () => {
       Poster:
         "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
     },
+    {
+      id: "id3",
+      Title: "Hollywood",
+      Poster:
+        "https://m.media-amazon.com/images/M/MV5BMTIxMDg2MDk3OF5BMl5BanBnXkFtZTcwMzcxMTIzMQ@@._V1_.jpg",
+    },
+    {
+      id: "id2",
+      Title: "The Godfather",
+      Poster:
+        "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+    },
+    {
+      id: "id3",
+      Title: "Hollywood",
+      Poster:
+        "https://m.media-amazon.com/images/M/MV5BMTIxMDg2MDk3OF5BMl5BanBnXkFtZTcwMzcxMTIzMQ@@._V1_.jpg",
+    },
   ]);
 
   //   const getFavoriteList = async (userId) => {
@@ -43,15 +61,19 @@ const FavoriteList = () => {
       <div className="movie-row">
         <div className="row">
           {movies.map((movie) => (
-            <div className="column" >
+            <div className="column">
               <img
                 src={movie.Poster}
                 className="posterSize"
                 alt="image of movie"
               ></img>
               <div className="button-align">
-                <button className="btn btn-primary btn-rounded btn-block">Add to Favorites</button>
-                <button className="btn btn-primary btn-rounded btn-block">Remove from List</button>
+                <button className="btn btn-primary btn-rounded btn-block">
+                  Favorite
+                </button>
+                <button className="btn btn-primary btn-rounded btn-block">
+                  Remove
+                </button>
               </div>
             </div>
           ))}
