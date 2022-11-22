@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 
 // return will return a list of movies
 // movie.Poster comes from the movie object
-const WishList = ({ list }) => {
+const WishList = ({ list, updateList }) => {
   const [movies, setMovies] = useState([]);
   const { userId } = useContext(MovieContext);
 
@@ -35,6 +35,7 @@ const WishList = ({ list }) => {
         },
         body: JSON.stringify(data),
       });
+      updateList();
     } catch (err) {
       console.log(err);
     }
