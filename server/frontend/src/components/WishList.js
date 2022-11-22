@@ -1,60 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/WishList.css";
 
 // return will return a list of movies
 // movie.Poster comes from the movie object
-const FavoriteList = () => {
-  // grab userId by context
-  // fetch backend api(getFavList) -> need to pass the userId
-  const [movies] = useState([
-    {
-      id: "id1",
-      Title: "Planet Earth II",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BZWYxODViMGYtMGE2ZC00ZGQ3LThhMWUtYTVkNGE3OWU4NWRkL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMjYwNDA2MDE@._V1_.jpg",
-    },
-    {
-      id: "id2",
-      Title: "The Godfather",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
-    },
-    {
-      id: "id3",
-      Title: "Hollywood",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BMTIxMDg2MDk3OF5BMl5BanBnXkFtZTcwMzcxMTIzMQ@@._V1_.jpg",
-    },
-    {
-      id: "id2",
-      Title: "The Godfather",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
-    },
-    {
-      id: "id3",
-      Title: "Hollywood",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BMTIxMDg2MDk3OF5BMl5BanBnXkFtZTcwMzcxMTIzMQ@@._V1_.jpg",
-    },
-  ]);
+const FavoriteList = ({ list }) => {
+  const [movies, setMovies] = useState([]);
 
-  //   const getFavoriteList = async (userId) => {
-  //     try {
-  //       const list = await fetch("/api/login/userID", {
-  //         method: "GET",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
+  const getMovie = async (movieId) => {
+    const rawRes = await fetch(`/api/movie/${movieId}`);
+    const res = await rawRes.json();
+    setMovies((movies) => [...movies, res.movie]);
+  };
 
-  // const remove =async(movie_id)=>{
-  //   // delete api to delete fav item by moview_id
-  // }
+  useEffect(() => {
+    const fetchMovies = () => {
+      list.map(async (movieId) => {
+        await getMovie(movieId);
+      });
+    };
+    fetchMovies();
+  }, [list]);
 
   return (
     <>
@@ -63,7 +28,7 @@ const FavoriteList = () => {
           {movies.map((movie) => (
             <div className="column">
               <img
-                src={movie.Poster}
+                src={movie.PosterLink}
                 className="posterSize"
                 alt="image of movie"
               ></img>
