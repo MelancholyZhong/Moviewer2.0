@@ -9,27 +9,25 @@ const pushNewFav = async (listName, userId, movieId) => {
     if (!user) {
       favList.insertOne({
         userId: userId,
-        favorites: [],
+        list: [],
       });
     }
-    favList.updateOne(query, { $push: { favorites: movieId } });
+    favList.updateOne(query, { $push: { list: movieId } });
   } catch (err) {
     console.log(err);
   }
 };
 
-// const getFavList = async(userId) => {
-//   const database = mongoUtil.getDB();
-//   if(!req.session.user) {
-//     const favList = await database.collection("favorites");
-//   }
-// }
+const getList = async (listName, userId) => {
+  const database = mongoUtil.getDB();
+  const query = { userId: userId };
+  try {
+    const user = await database.collection(listName).findOne(query);
+    const list = user.list;
+    return list;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-// get favorites list by usedId -> you can get `favorites` array in here
-// ["id1", "id2"] -> for loop -> find the movie detail by "id"
-// [{object1}, {object2}]
-
-
-
-
-module.exports = { pushNewFav };
+module.exports = { pushNewFav, getList };

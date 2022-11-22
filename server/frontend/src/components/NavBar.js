@@ -6,16 +6,13 @@ import "../styles/NavBar.css";
 
 // use isLoggedIn global variable for login and logout conditional rendering
 const NavBar = () => {
-  const { isLoggedIn, setIsLoggedIn } = useContext(MovieContext);
+  const { isLoggedIn, setIsLoggedIn, userId, setUserId } =
+    useContext(MovieContext);
   const logout = async () => {
     setIsLoggedIn(false);
+    setUserId();
     try {
-      await fetch("/api/login", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      await fetch("/api/login/logout");
     } catch (err) {
       console.log(err);
     }
@@ -35,7 +32,7 @@ const NavBar = () => {
           </li>
           <li className="nav-item">
             {isLoggedIn && (
-              <Link to="./dashboard" className="nav-link">
+              <Link to={`./dashboard/${userId}`} className="nav-link">
                 Dashboard
               </Link>
             )}

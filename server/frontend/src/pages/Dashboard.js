@@ -1,30 +1,37 @@
-import React, { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import FavoriteList from "../components/FavoriteList";
 import WishList from "../components/WishList";
-import { MovieContext } from "../context/context";
-
 
 const Dashboard = () => {
-  const { isLoggedIn } = useContext(MovieContext);
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (!isLoggedIn) {
-      console.log("logout1");
-      navigate("/");
+  const { userId } = useParams();
+  const [favList, setFavList] = useState([]);
+  const [wishList, setWishList] = useState([]);
+
+  const fetchList = async () => {
+    const resRaw = await fetch(`/api/list/${userId}`);
+    if (resRaw.ok) {
+      const res = await resRaw.json();
+      setFavList(res.favList ? res.favList : []);
+      setWishList(res.wishList ? res.wishList : []);
     }
-  });
+  };
+
+  useEffect(() => {
+    fetchList();
+  }, []);
+
   return (
     <div>
       <h1>Dashboard</h1>
       <div>
         <div>
           <h2>Favorites List</h2>
-          <FavoriteList />
+          <FavoriteList list={favList} />
         </div>
         <div>
           <h2>To Watch List</h2>
-          <WishList />
+          <WishList list={wishList} />
         </div>
       </div>
     </div>
