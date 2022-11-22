@@ -72,9 +72,9 @@ To start the project, run
 
 ## Design Document, Demonstration, Slides
 
-- Design Document: Coming soon
-- Demo video: Coming soon
-- Slides: Coming soon
+- Design Document: https://github.com/MelancholyZhong/Moviewer/blob/main/Zhong-Leung-%20design-document.pdf
+- Demo video: https://www.youtube.com/watch?app=desktop&v=UqtbV2skJlk&feature=youtu.be
+- Slides: https://docs.google.com/presentation/d/1_BniTUwzlQkSrHP0Sofj4VP2siLdlQjFY3Zsdye4P34/edit#slide=id.p
 
 ## Reference Link
 
