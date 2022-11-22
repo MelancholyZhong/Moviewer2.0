@@ -1,6 +1,7 @@
 .posterSize {
-  width: 17rem;
+  width: 15rem;
   display: flex;
+  margin: auto;
 }
 
 .movie-row > .row {

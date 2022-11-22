@@ -1,6 +1,7 @@
 .posterSize {
-  width: 17rem;
+  width: 15rem;
   display: flex;
+  margin: auto;
 }
 
 .movie-row > .row {
@@ -13,10 +14,14 @@
 }
 
 .column {
-  flex: 33.33%;
+  flex: 20%;
   padding: 5px;
 }
 
 .button-align {
   text-align: center;
+}
+
+.btn {
+  background-color: #ffa31a;
 }
