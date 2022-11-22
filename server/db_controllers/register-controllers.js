@@ -1,14 +1,17 @@
+// Aaron Leung
 const mongoUtil = require("../mongoUtil");
 const bcrypt = require ("bcrypt");
 const saltRounds = 10;
 
-// hashpassword function
+// Use bcrypt to hash password
+// source: https://www.npmjs.com/package/bcrypt 
 const hashPassword = async (password) => {
   const salt = await bcrypt.genSalt(saltRounds);
   const hash = await bcrypt.hash(password, salt);
   return hash;
 };
-// got rid of res
+
+// store encrypted password to the database
 const registerUser = async (req) => {
   const database = mongoUtil.getDB();
   const email = req.email;
@@ -17,6 +20,7 @@ const registerUser = async (req) => {
   const password = req.password;
   const hashedPassword = await hashPassword(password);
 
+  // Check if user exist, if doesn't exist insert into database
   const userExist = await database
     .collection("users")
     .findOne({ email: email });

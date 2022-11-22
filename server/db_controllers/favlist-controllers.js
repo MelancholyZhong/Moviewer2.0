@@ -30,4 +30,17 @@ const getList = async (listName, userId) => {
   }
 };
 
-module.exports = { pushNewFav, getList };
+const removeMovie = async (listName, userId, movieId) => {
+  const database = mongoUtil.getDB();
+  const query = { userId: userId };
+  try {
+    const list = await database.collection(listName);
+    await list.update(query, { $pull: { list: movieId } });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+
+
+module.exports = { pushNewFav, getList, removeMovie };

@@ -1,8 +1,10 @@
+// Navbar by Yao, login/ logout conditional rendering by Aaron Leung
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { MovieContext } from "../context/context";
 import "../styles/NavBar.css";
 
+// use isLoggedIn global variable for login and logout conditional rendering
 const NavBar = () => {
   const { isLoggedIn, setIsLoggedIn, userId, setUserId } =
     useContext(MovieContext);
@@ -45,9 +47,6 @@ const NavBar = () => {
                 Login
               </Link>
             )}
-            {/* <Link to="./login" className="nav-link">
-              Login
-            </Link> */}
           </li>
         </ul>
       </div>

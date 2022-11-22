@@ -1,17 +1,14 @@
+// Aaron Leung
 import React, { useState } from "react";
-//import { Link, useNavigate } from "react-router-dom";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/UserForm.css";
 
 const Signup = () => {
-  //const navigate = useNavigate();
-
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  //const [message, setMessage] = useState("");
 
   const data = {
     fname: fname,
@@ -19,15 +16,13 @@ const Signup = () => {
     email: email,
     password: password,
   };
-  // where to use UseEffect
+  
   const navigate = useNavigate();
   const submitHandler = async (e) => {
     // Prevent page from re-rendering
     e.preventDefault();
     console.log(data);
-    // console.log(lname);
-    // console.log(email);
-    // console.log(password);
+  
     try {
       let userData = await fetch("/api/register", {
         method: "POST",
@@ -36,10 +31,7 @@ const Signup = () => {
         },
         body: JSON.stringify(data),
       });
-      // Getting response data from backend
-      //let resJson = await redirect.json();
-      // get status value as response from backend.  status 200 means success
-      //const res = await userData.json;
+     
       const res = await userData.json();
       console.log(res);
       if (res.isCreated) {
@@ -57,7 +49,6 @@ const Signup = () => {
     }
   };
 
-  // should handlesubmit go on button?
   return (
     <div className="fullscreen">
       <form onSubmit={submitHandler} className="form">
