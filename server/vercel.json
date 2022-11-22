@@ -7,8 +7,9 @@
       "use": "@vercel/node"
     },
     {
-      "src": "/frontend",
-      "use": "@vercel/react"
+      "src": "/frontend/pakage.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
     }
   ],
   "routes": [
