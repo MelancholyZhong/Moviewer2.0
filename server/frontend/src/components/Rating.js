@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import "../styles/Rating.css";
 
@@ -80,6 +81,11 @@ const Rating = ({ value, movieId }) => {
       </span>
     </div>
   );
+};
+
+Rating.propTypes = {
+  value: PropTypes.number,
+  movieId: PropTypes.string,
 };
 
 export default Rating;

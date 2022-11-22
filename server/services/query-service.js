@@ -1,4 +1,7 @@
-const { queryMovieByName } = require("../db_controllers/movies-controllers");
+const {
+  queryMovieByName,
+  queryTops,
+} = require("../db_controllers/movies-controllers");
 
 const queryMovie = async (req, res) => {
   const name = req.params.name;
@@ -10,6 +13,11 @@ const queryMovie = async (req, res) => {
   }
 };
 
+const getTops = async (req, res) => {
+  const tops = await queryTops();
+  res.json({ status: 200, tops: tops });
+};
 module.exports = {
   queryMovie,
+  getTops,
 };

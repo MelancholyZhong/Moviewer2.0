@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/FavoriteList.css";
+import PropTypes from "prop-types";
 
 // return will return a list of movies
 // movie.Poster comes from the movie object
@@ -7,12 +8,10 @@ import "../styles/FavoriteList.css";
 const FavoriteList = ({ list }) => {
   const [movies, setMovies] = useState([]);
 
-
   const getMovie = async (movieId) => {
     const rawRes = await fetch(`/api/movie/${movieId}`);
     const res = await rawRes.json();
     setMovies((movies) => [...movies, res.movie]);
-
   };
 
   useEffect(() => {
@@ -49,6 +48,10 @@ const FavoriteList = ({ list }) => {
       </div>
     </>
   );
+};
+
+FavoriteList.propTypes = {
+  list: PropTypes.array,
 };
 
 export default FavoriteList;
