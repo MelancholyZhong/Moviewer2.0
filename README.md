@@ -1,6 +1,6 @@
 # Moviewer
 
-Movie recommendation application that recommends movies based on the user's Favorite List.  Users can search for movies to add to their favorite list and watch list.  Searched movies will show details regarding the movie (runtime, genre, rating).  Additionally, users can post reviews on movies they have watched.
+Movie recommendation application that recommends movies based on the user's Favorite List. Users can search for movies to add to their favorite list and watch list. Searched movies will show details regarding the movie (runtime, genre, rating). Additionally, users can post reviews on movies they have watched.
 
 ## Project Objective
 
@@ -49,17 +49,20 @@ To start the project, run
 
 ```
      cd server
-     npm run initdb
-     npm run inituser
-     npm start
+     yarn install
+     cd frontend
+     yarn install && yarn build
+     cd ..
+     yarn run initMovies
+     yarn start
 ```
 
 ### Instructions to use
 
-1. If you simply want to search for a movie, you can use the search function without logging in.  In order to have access to favorites list and to watch list, you will have to log in first.
-2. If you don't have an account, you can click "sign up" to register a new account.  Both login and sign up have validation input such as checking if credentials match or if account already exists when creating a new account.
-3. Once logged in, you will be directed to the dashboard which contains favorite list and to watch list.  You can update your favorite list and watch list here.
-4. Click logout to sign out.  
+1. If you simply want to search for a movie, you can use the search function without logging in. In order to have access to favorites list and to watch list, you will have to log in first.
+2. If you don't have an account, you can click "sign up" to register a new account. Both login and sign up have validation input such as checking if credentials match or if account already exists when creating a new account.
+3. Once logged in, you will be directed to the dashboard which contains favorite list and to watch list. You can update your favorite list and watch list here.
+4. Click logout to sign out.
 
 ## Authors and Project Link
 
@@ -77,4 +80,3 @@ To start the project, run
 
 This project was built as part of CS5610 Web Development course. For more information about the course see the following link:
 https://johnguerra.co/classes/webDevelopment_fall_2022/
-
