@@ -3,13 +3,16 @@ import "../styles/FavoriteList.css";
 
 // return will return a list of movies
 // movie.Poster comes from the movie object
+
 const FavoriteList = ({ list }) => {
   const [movies, setMovies] = useState([]);
+
 
   const getMovie = async (movieId) => {
     const rawRes = await fetch(`/api/movie/${movieId}`);
     const res = await rawRes.json();
     setMovies((movies) => [...movies, res.movie]);
+
   };
 
   useEffect(() => {
