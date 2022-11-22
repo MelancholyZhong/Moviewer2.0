@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import "../styles/ReviewBox.css";
 
+import PropTypes from "prop-types";
+
 const ReviewBox = ({ movieId, reviewUpdate }) => {
   const defaultReview = { movieId, userId: "melancholyzhong" };
   const [content, setContent] = useState("");
@@ -50,6 +52,11 @@ const ReviewBox = ({ movieId, reviewUpdate }) => {
       </div>
     </div>
   );
+};
+
+ReviewBox.propTypes = {
+  movieId: PropTypes.string,
+  reviewUpdate: PropTypes.func,
 };
 
 export default ReviewBox;

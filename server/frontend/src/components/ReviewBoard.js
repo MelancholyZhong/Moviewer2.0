@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 import "../styles/ReviewBoard.css";
 
@@ -41,6 +42,10 @@ const ReviewBoard = ({ movieId }) => {
       </div>
     </div>
   );
+};
+
+ReviewBoard.propTypes = {
+  movieId: PropTypes.string,
 };
 
 export default ReviewBoard;

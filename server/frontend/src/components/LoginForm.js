@@ -97,4 +97,7 @@ const Login = () => {
     </div>
   );
 };
+
+Login.propTypes = {};
+
 export default Login;
