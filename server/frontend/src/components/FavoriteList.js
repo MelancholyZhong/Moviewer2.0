@@ -4,11 +4,9 @@ import { MovieContext } from "../context/context";
 import "../styles/FavoriteList.css";
 import PropTypes from "prop-types";
 
-
 const FavoriteList = ({ list, updateList }) => {
   const [movies, setMovies] = useState([]);
   const { userId } = useContext(MovieContext);
-
 
   // Yao
   const getMovie = async (movieId) => {
@@ -52,7 +50,7 @@ const FavoriteList = ({ list, updateList }) => {
     fetchMovies();
   }, [list]);
 
- // Aaron Leung
+  // Aaron Leung
   return (
     <>
       <div className="movie-row">
