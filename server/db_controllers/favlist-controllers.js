@@ -23,7 +23,10 @@ const getList = async (listName, userId) => {
   const query = { userId: userId };
   try {
     const user = await database.collection(listName).findOne(query);
-    const list = user.list;
+    let list = user.list;
+    if (!user) {
+      list = [];
+    }
     return list;
   } catch (err) {
     console.log(err);
@@ -41,7 +44,5 @@ const removeMovie = async (listName, userId, movieId) => {
     console.log(err);
   }
 };
-
-
 
 module.exports = { pushNewFav, getList, removeMovie };
