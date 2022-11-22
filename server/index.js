@@ -3,7 +3,6 @@ const bodyParser = require("body-parser");
 const mongoUtil = require("./mongoUtil");
 const path = require("path");
 const session = require("express-session");
-// const passport = require("passport");
 
 const app = express();
 const port = 3001;
@@ -21,7 +20,6 @@ const movieRoutes = require("./routes/movie-routes");
 const reviewRoutes = require("./routes/review-routes");
 const loginRoutes = require("./routes/login-routes");
 const listRoutes = require("./routes/list-routes");
-// adding register
 const registerRoutes = require("./routes/register-routes");
 
 mongoUtil.connectToClient();
@@ -31,15 +29,6 @@ app.use(express.static(path.join(__dirname, "frontend/build")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// app.use(passport.initialize());
-// app.use(passport.session());
-
-// // //testing
-// app.use((req, res, next) => {
-//   console.log(req.session);
-//   console.log(req.session.user);
-//   next();
-// });
 
 app.use("/api/query", queryRoutes);
 app.use("/api/movie", movieRoutes);

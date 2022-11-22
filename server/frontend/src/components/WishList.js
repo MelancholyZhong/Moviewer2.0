@@ -1,15 +1,15 @@
+// Aaron Leung 
 import React, { useState, useEffect, useContext } from "react";
 import { MovieContext } from "../context/context";
 import "../styles/WishList.css";
 
 import PropTypes from "prop-types";
 
-// return will return a list of movies
-// movie.Poster comes from the movie object
 const WishList = ({ list }) => {
   const [movies, setMovies] = useState([]);
   const { userId } = useContext(MovieContext);
 
+  // Yao
   const getMovie = async (movieId) => {
     const rawRes = await fetch(`/api/movie/${movieId}`);
     const res = await rawRes.json();
@@ -25,6 +25,7 @@ const WishList = ({ list }) => {
     fetchMovies();
   }, [list]);
 
+  // Aaron Leung
   const removeMovie = async (movieId) => {
     const data = { userId: userId, movieId: movieId };
     try {
@@ -41,6 +42,7 @@ const WishList = ({ list }) => {
     return;
   };
 
+  // Aaron Leung
   return (
     <>
       <div className="movie-row">

@@ -1,3 +1,4 @@
+// Aaron Leung and Yao
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import FavoriteList from "../components/FavoriteList";
@@ -8,6 +9,7 @@ const Dashboard = () => {
   const [favList, setFavList] = useState([]);
   const [wishList, setWishList] = useState([]);
 
+  // Yao
   const fetchList = async () => {
     const resRaw = await fetch(`/api/list/${userId}`);
     if (resRaw.ok) {
@@ -21,6 +23,7 @@ const Dashboard = () => {
     fetchList();
   }, []);
 
+  // Aaron Leung
   return (
     <div>
       <h1>Dashboard</h1>
@@ -40,13 +43,3 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-// getfavoritlist function (used inside useEffect)
-// useState methods to set the favorite list
-
-// function getfavoritlist(){
-// fetch api based on the userId
-// data
-// setfavoritlist(data)
-// }
-
-// print the list out using map

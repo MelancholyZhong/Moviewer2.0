@@ -16,12 +16,14 @@ const addToWishList = async (req, res) => {
   res.status(200).json({ message: "added to wish list" });
 };
 
+// Aaron Leung
 const removeFromFavList = async (req, res) => {
   const {userId, movieId } = req.body;
   await removeMovie("favorites", userId, movieId);
   res.json({message: "removed from fav list"});
 };
 
+// Aaron Leung
 const removeFromWishList = async (req, res) => {
   const {userId, movieId } = req.body;
   await removeMovie("wish", userId, movieId);
