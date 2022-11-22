@@ -1,19 +1,14 @@
+// Aaron Leung
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-//import { Link } from "react-router-dom";
 import "../styles/UserForm.css";
 import { MovieContext } from "../context/context";
-//import LoginForm from "../components/LoginForm";
 
 const Login = () => {
-  //const { isLoggedIn, setIsLoggedIn } = useContext(MovieContext);
   const { setIsLoggedIn, setUserId } = useContext(MovieContext);
-  //const navigate = useNavigate();
-  // Delcare states needed to store input values: email, password
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  //const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
 
@@ -22,10 +17,9 @@ const Login = () => {
     password: password,
   };
 
-  // when form is submitted, calls submitHandler where posts data to REST API
+  // When form is submitted, calls submitHandler where posts data to REST API
   const submitHandler = async (e) => {
     console.log(data);
-    //console.log(password);
     // Prevent page from re-rendering
     e.preventDefault();
     try {
@@ -37,23 +31,15 @@ const Login = () => {
         body: JSON.stringify(data),
       });
       console.log("userData1", userData);
-      // Getting response data from backend
-      //let resJson = await redirect.json();
-      // get status value as response from backend.  status 200 means success
       const res = await userData.json();
-  
-      console.log("//", JSON.stringify(res.isLoggedIn));
+      // if user is logged in
       if (res.isLoggedIn) {
         setUserId(email);
         setEmail("");
         setPassword("");
         setIsLoggedIn(true);
-        // want to show alert
-        //setMessage(res.message);
-        //console.log(message);
         navigate("/dashboard");
       } else {
-        console.log("not ok");
         setError(res.message);
       }
     } catch (err) {

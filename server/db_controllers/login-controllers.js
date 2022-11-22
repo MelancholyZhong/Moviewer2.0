@@ -1,4 +1,4 @@
-// Aaron Leung - Login with user collection
+// Aaron Leung - Login controller retrieve user with corresponding email
 const mongoUtil = require("../mongoUtil");
 
 const getUserPassword = async (email) => {
@@ -12,5 +12,5 @@ const getUserPassword = async (email) => {
   }
   return user;
 };
-// returning user
+
 module.exports = { getUserPassword };
