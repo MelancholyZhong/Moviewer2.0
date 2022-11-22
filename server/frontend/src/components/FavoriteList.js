@@ -6,15 +6,30 @@ import PropTypes from "prop-types";
 // return will return a list of movies
 // movie.Poster comes from the movie object
 
-const FavoriteList = ({ list }) => {
+const FavoriteList = ({ list, updateList }) => {
   const [movies, setMovies] = useState([]);
   const { userId } = useContext(MovieContext);
-
 
   const getMovie = async (movieId) => {
     const rawRes = await fetch(`/api/movie/${movieId}`);
     const res = await rawRes.json();
     setMovies((movies) => [...movies, res.movie]);
+  };
+
+  const removeMovie = async (movieId) => {
+    const data = { userId: userId, movieId: movieId };
+    try {
+      await fetch("/api/list/removeFav", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      updateList();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -24,23 +39,7 @@ const FavoriteList = ({ list }) => {
       });
     };
     fetchMovies();
-  }, [list, removeMovie]);
-
-  const removeMovie = async (movieId) => {
-    const data = { userId: userId, movieId: movieId};
-    try {
-      await fetch("/api/list/removeFav", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-    } catch (err) {
-      console.log(err);
-    }
-    return;
-  };
+  }, [list]);
 
   return (
     <>
@@ -57,7 +56,9 @@ const FavoriteList = ({ list }) => {
                 ></img>
                 <div className="button-align">
                   <button
-                    onClick={()=>{removeMovie(movie._id);}}
+                    onClick={() => {
+                      removeMovie(movie._id);
+                    }}
                     className="btn btn-success btn-rounded btn-block"
                   >
                     Remove
@@ -74,6 +75,7 @@ const FavoriteList = ({ list }) => {
 
 FavoriteList.propTypes = {
   list: PropTypes.array,
+  updateList: PropTypes.func,
 };
 
 export default FavoriteList;
