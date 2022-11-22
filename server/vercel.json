@@ -6,8 +6,8 @@
       "use": "@vercel/node"
     },
     {
-      "src": "/frontend/build/static/**",
-      "use": "@vercel/static"
+      "src": "/frontend",
+      "use": "@vercel/react"
     }
   ],
   "routes": [
