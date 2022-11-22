@@ -3,8 +3,10 @@ import "../styles/FavoriteList.css";
 
 // return will return a list of movies
 // movie.Poster comes from the movie object
+
 const FavoriteList = ({ list }) => {
   const [movies, setMovies] = useState([]);
+
 
   const getMovies = () => {
     const rawMovies = [];

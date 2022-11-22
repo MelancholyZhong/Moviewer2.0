@@ -1,4 +1,13 @@
 const mongoUtil = require("../mongoUtil");
+const bcrypt = require ("bcrypt");
+const saltRounds = 10;
+
+// hashpassword function
+const hashPassword = async (password) => {
+  const salt = await bcrypt.genSalt(saltRounds);
+  const hash = await bcrypt.hash(password, salt);
+  return hash;
+};
 // got rid of res
 const registerUser = async (req) => {
   const database = mongoUtil.getDB();
@@ -6,6 +15,7 @@ const registerUser = async (req) => {
   const fname = req.fname;
   const lname = req.lname;
   const password = req.password;
+  const hashedPassword = await hashPassword(password);
 
   const userExist = await database
     .collection("users")
@@ -17,7 +27,7 @@ const registerUser = async (req) => {
       fname: fname,
       lname: lname,
       email: email,
-      password: password,
+      password: hashedPassword,
     });
     message = "Account created!";
     accountCreated = true;
