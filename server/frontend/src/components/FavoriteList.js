@@ -77,8 +77,8 @@ const FavoriteList = ({ list, updateList }) => {
 };
 
 FavoriteList.propTypes = {
-  list: PropTypes.array,
-  updateList: PropTypes.func,
+  list: PropTypes.array.isRequired,
+  updateList: PropTypes.func.isRequired,
 };
 
 export default FavoriteList;

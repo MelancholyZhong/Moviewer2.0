@@ -77,7 +77,7 @@ const WishList = ({ list, updateList }) => {
 };
 
 WishList.propTypes = {
-  list: PropTypes.array,
+  list: PropTypes.array.isRequired,
 };
 
 export default WishList;

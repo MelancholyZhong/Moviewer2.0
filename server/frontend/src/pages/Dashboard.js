@@ -1,13 +1,26 @@
 // Aaron Leung and Yao
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import FavoriteList from "../components/FavoriteList";
 import WishList from "../components/WishList";
+import { MovieContext } from "../context/context";
 
 const Dashboard = () => {
   const { userId } = useParams();
   const [favList, setFavList] = useState([]);
   const [wishList, setWishList] = useState([]);
+  const { isLoggedIn } = useContext(MovieContext);
+  const navigate = useNavigate();
+  
+  // Making sure users can't return back to last page once logged out
+  // Aaron Leung
+  useEffect(()=>{
+
+    if(!isLoggedIn){
+      console.log("logout1");
+      navigate("/");
+    }
+  });
 
   // Yao
   const fetchList = async () => {
