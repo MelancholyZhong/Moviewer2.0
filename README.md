@@ -1,3 +1,4 @@
+# Note: Completed and Deployed on 11/22 (for bonus points)
 # Moviewer
 
 Movie recommendation application that recommends movies based on the user's Favorite List. Users can search for movies to add to their favorite list and watch list. Searched movies will show details regarding the movie (runtime, genre, rating). Additionally, users can post reviews on movies they have watched.
@@ -68,7 +69,13 @@ To start the project, run
 
 - Yao Zhong
 - Aaron Leung
-- Project URL: Coming soon
+- Project URL: https://moviewer.onrender.com/
+
+## Milestone link:
+
+- 60%: https://github.com/MelancholyZhong/Moviewer/tree/f788dff65b70d6617d6e6aa46c71a7d59027feed
+- 80%: https://github.com/MelancholyZhong/Moviewer/releases/tag/v1.0
+
 
 ## Design Document, Demonstration, Slides
 
