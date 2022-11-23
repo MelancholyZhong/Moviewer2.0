@@ -71,7 +71,7 @@ To start the project, run
 - Aaron Leung
 - Project URL: https://moviewer.onrender.com/
 
-## Milestone link:
+## Milestone links:
 
 - 60%: https://github.com/MelancholyZhong/Moviewer/tree/f788dff65b70d6617d6e6aa46c71a7d59027feed
 - 80%: https://github.com/MelancholyZhong/Moviewer/releases/tag/v1.0
