@@ -1,4 +1,5 @@
 # Note: Completed and Deployed on 11/22 (for bonus points)
+Early submission release: https://github.com/MelancholyZhong/Moviewer/releases/tag/v2.0
 # Moviewer
 
 Movie recommendation application that recommends movies based on the user's Favorite List. Users can search for movies to add to their favorite list and watch list. Searched movies will show details regarding the movie (runtime, genre, rating). Additionally, users can post reviews on movies they have watched.
