@@ -62,8 +62,9 @@ To start the project, run
 
 1. If you simply want to search for a movie, you can use the search function without logging in. In order to have access to favorites list and to watch list, you will have to log in first.
 2. If you don't have an account, you can click "sign up" to register a new account. Both login and sign up have validation input such as checking if credentials match or if account already exists when creating a new account.
-3. Once logged in, you will be directed to the dashboard which contains favorite list and to watch list. You can update your favorite list and watch list here.
-4. Click logout to sign out.
+3. Once logged in, you will be directed to the dashboard which contains favorite list and to watch list. You can remove movies from your favorite list and watch list here.
+4. To search for a movie, click on "Moviewer" label on the top left corner.  This will direct you to the search page.
+5. Click logout to sign out.
 
 ## Authors and Project Link
 
