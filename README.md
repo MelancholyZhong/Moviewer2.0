@@ -1,3 +1,5 @@
+# Note: Completed and Deployed on 11/22 (for bonus points)
+Early submission release: https://github.com/MelancholyZhong/Moviewer/releases/tag/v2.0
 # Moviewer
 
 Movie recommendation application that recommends movies based on the user's Favorite List. Users can search for movies to add to their favorite list and watch list. Searched movies will show details regarding the movie (runtime, genre, rating). Additionally, users can post reviews on movies they have watched.
@@ -61,20 +63,27 @@ To start the project, run
 
 1. If you simply want to search for a movie, you can use the search function without logging in. In order to have access to favorites list and to watch list, you will have to log in first.
 2. If you don't have an account, you can click "sign up" to register a new account. Both login and sign up have validation input such as checking if credentials match or if account already exists when creating a new account.
-3. Once logged in, you will be directed to the dashboard which contains favorite list and to watch list. You can update your favorite list and watch list here.
-4. Click logout to sign out.
+3. Once logged in, you will be directed to the dashboard which contains favorite list and to watch list. You can remove movies from your favorite list and watch list here.
+4. To search for a movie, click on "Moviewer" label on the top left corner.  This will direct you to the search page.
+5. Click logout to sign out.
 
 ## Authors and Project Link
 
 - Yao Zhong
 - Aaron Leung
-- Project URL: Coming soon
+- Project URL: https://moviewer.onrender.com/
+
+## Milestone links:
+
+- 60%: https://github.com/MelancholyZhong/Moviewer/tree/f788dff65b70d6617d6e6aa46c71a7d59027feed
+- 80%: https://github.com/MelancholyZhong/Moviewer/releases/tag/v1.0
+
 
 ## Design Document, Demonstration, Slides
 
-- Design Document: Coming soon
-- Demo video: Coming soon
-- Slides: Coming soon
+- Design Document: https://github.com/MelancholyZhong/Moviewer/blob/main/Zhong-Leung-%20design-document.pdf
+- Demo video: https://www.youtube.com/watch?app=desktop&v=UqtbV2skJlk&feature=youtu.be
+- Slides: https://docs.google.com/presentation/d/1_BniTUwzlQkSrHP0Sofj4VP2siLdlQjFY3Zsdye4P34/edit#slide=id.p
 
 ## Reference Link
 

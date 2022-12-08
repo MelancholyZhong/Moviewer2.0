@@ -3,7 +3,9 @@ const { ObjectId } = require("mongodb");
 
 const queryMovieByName = async (movie) => {
   const database = mongoUtil.getDB();
-  const query = { Name: movie };
+  const keyWords = movie.split(" ");
+  const regex = keyWords.join(".*");
+  const query = { Name: { $regex: regex, $options: "si" } };
   let foundMovie;
   try {
     foundMovie = await database.collection("movies").findOne(query);

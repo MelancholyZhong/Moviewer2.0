@@ -60,6 +60,9 @@ const Rating = ({ value, movieId }) => {
       <h3>{value}</h3>
       <br />
       <button className="favButton" title="Add movie to Favorite List">
+      <br />
+      <br />
+      <span>
         {!disableFav && (
           <i
             className="bi bi-box2-heart h2"
@@ -79,6 +82,17 @@ const Rating = ({ value, movieId }) => {
           ></i>
         )}
       </button>
+      </span>
+      <span>
+        {!disableWish && (
+          <i
+            className="bi bi-calendar-plus h2"
+            onClick={() => {
+              addToList("wish");
+            }}
+          ></i>
+        )}
+      </span>
     </div>
   );
 };
