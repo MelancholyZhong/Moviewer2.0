@@ -17,11 +17,13 @@ const NavBar = () => {
       console.log(err);
     }
   };
-
+  // fas fa-bi bi-house fa-10x
+  // change bi bi-house to bi bi-search
   return (
     <nav className="navbar  navbar-expand-md">
       <div className="container-fluid">
-        <Link to="/" className="navbar-brand">
+        <Link to="/" title="Navigate to search menu" className="navbar-brand">
+          <i className="fas fa-bi bi-search fa-20x"></i>
           Moviewer
         </Link>
         <ul className="navbar-nav">

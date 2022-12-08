@@ -48,6 +48,7 @@ const Rating = ({ value, movieId, type }) => {
       <progress id="file" max="10" value={value}></progress>
       <h3>{value}</h3>
       <br />
+      <button className="favButton" title="Add movie to Favorite List">
       <br />
       {type !== "details" && (
         <span>
