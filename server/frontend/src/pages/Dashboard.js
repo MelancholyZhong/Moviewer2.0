@@ -40,9 +40,10 @@ const Dashboard = () => {
 
   // Aaron Leung
   // How to add space in inline icon
+  // How to make question-circle smaller
   return (
     <div>
-      <h1>Dashboard</h1>
+      <h1>Dashboard <i className="bi bi-question-circle h2" title="Your Favorite list and To Watch List will be shown here.  To start searching for movies, click the Moviewer on the top left."></i></h1>
       <div>
         <div>
           <h2> <i className="bi bi-box2-heart h2"></i>Favorites List</h2>
