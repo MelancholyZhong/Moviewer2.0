@@ -27,7 +27,11 @@ const MovieCard = ({ movieId }) => {
       <div className="card-body">
         <div className="row">
           <div className="col-4">
-            <img src={movie.PosterLink} className="img-thumbnail" alt="..." />
+            <img
+              src={movie.PosterLink}
+              className="img-thumbnail"
+              alt={`Poster for ${movie.Name}`}
+            />
           </div>
           <div className="col-4">
             <ul className="infoList">
@@ -56,7 +60,11 @@ const MovieCard = ({ movieId }) => {
             </ul>
           </div>
           <div className="col-4">
-            <Rating value={movie.RatingValue} movieId={movieId} />
+            <Rating
+              value={movie.RatingValue}
+              movieId={movieId}
+              type="details"
+            />
           </div>
         </div>
       </div>

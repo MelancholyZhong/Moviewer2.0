@@ -3,13 +3,20 @@ import React, { useState } from "react";
 import "../styles/ReviewBox.css";
 
 import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 
-const ReviewBox = ({ movieId, reviewUpdate }) => {
-  const defaultReview = { movieId, userId: "melancholyzhong" };
+const ReviewBox = ({ movieId, reviewUpdate, userId }) => {
+  const navigate = useNavigate();
+  const defaultReview = { movieId, userId: userId };
   const [content, setContent] = useState("");
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    if (!userId) {
+      navigate("/login");
+    } else if (content === "") {
+      return;
+    }
     const review = defaultReview;
     review.content = content;
     try {
@@ -28,7 +35,11 @@ const ReviewBox = ({ movieId, reviewUpdate }) => {
   };
 
   const changeHandler = (content) => {
-    setContent(content);
+    if (!userId) {
+      navigate("/login");
+    } else {
+      setContent(content);
+    }
   };
 
   return (

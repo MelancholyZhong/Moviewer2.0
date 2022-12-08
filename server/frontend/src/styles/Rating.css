@@ -5,3 +5,8 @@
 .bi {
   margin: 1rem;
 }
+
+.iconButton {
+  border: none;
+  background-color: #fff;
+}

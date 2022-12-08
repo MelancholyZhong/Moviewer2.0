@@ -5,11 +5,11 @@ const {
 
 const queryMovie = async (req, res) => {
   const name = req.params.name;
-  const movie = await queryMovieByName(name);
-  if (movie === null) {
+  const movies = await queryMovieByName(name);
+  if (movies === null || movies.length === 0) {
     res.json({ status: 404 });
   } else {
-    res.json({ status: 200, movie: movie });
+    res.json({ status: 200, movies: movies });
   }
 };
 

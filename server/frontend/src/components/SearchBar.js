@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import "../styles/SearchBar.css";
 
-const SearchBar = () => {
-  const navigate = useNavigate();
-
+const SearchBar = ({ cb }) => {
   const [movieName, setMovieName] = useState("");
   const [notFound, setNotFound] = useState(false);
 
@@ -16,7 +13,7 @@ const SearchBar = () => {
       const res = await rawRes.json();
       if (res.status === 200) {
         setNotFound(false);
-        navigate(`/movie/${res.movie._id}`);
+        cb(res.movies);
       } else {
         setNotFound(true);
       }
@@ -34,16 +31,18 @@ const SearchBar = () => {
     <div className="card text-center">
       <div className="card-body">
         <form onSubmit={submitHandler}>
-          <input
-            type="text"
-            id="query_value"
-            name="value"
-            onChange={(e) => {
-              changeHandler(e.target.value);
-            }}
-            value={movieName}
-          />
-          <button type="submit" id="queryBtn" className="btn">
+          <label>
+            <input
+              type="text"
+              id="query_value"
+              name="value"
+              onChange={(e) => {
+                changeHandler(e.target.value);
+              }}
+              value={movieName}
+            />
+          </label>
+          <button type="submit" id="queryBtn" className="btn btn-primary">
             Search
           </button>
         </form>
