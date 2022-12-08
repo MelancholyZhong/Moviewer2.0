@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import PropTypes from "prop-types";
 
 import "../styles/ReviewBoard.css";
 
 import ReviewCard from "./ReviewCard";
 import ReviewBox from "./ReviewBox";
+import { MovieContext } from "../context/context";
 
 const ReviewBoard = ({ movieId }) => {
   const [reviews, setReviews] = useState([]);
+  const { userId } = useContext(MovieContext);
 
   const fetchReviews = async () => {
     try {
@@ -27,7 +29,11 @@ const ReviewBoard = ({ movieId }) => {
     <div className="card text-center">
       <div className="card-body">
         <h3 className="card-title">Reviews</h3>
-        <ReviewBox movieId={movieId} reviewUpdate={fetchReviews} />
+        <ReviewBox
+          movieId={movieId}
+          reviewUpdate={fetchReviews}
+          userId={userId}
+        />
         <div>
           {reviews.map((item) => {
             return (
@@ -35,6 +41,7 @@ const ReviewBoard = ({ movieId }) => {
                 key={item._id}
                 item={item}
                 reviewUpdate={fetchReviews}
+                userId={userId}
               ></ReviewCard>
             );
           })}

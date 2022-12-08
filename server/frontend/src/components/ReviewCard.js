@@ -4,7 +4,7 @@ import "../styles/ReviewCard.css";
 
 import PropTypes from "prop-types";
 
-const ReviewCard = ({ item, reviewUpdate }) => {
+const ReviewCard = ({ item, reviewUpdate, userId }) => {
   const [content, setContent] = useState(item.content);
   const [editing, setEditing] = useState(false);
 
@@ -52,12 +52,12 @@ const ReviewCard = ({ item, reviewUpdate }) => {
       <div className="card-header">{item.userId}</div>
       <div className="card-body">
         {!editing && <p className="card-text">{content}</p>}
-        {!editing && (
+        {!editing && userId && userId == item.userId && (
           <button onClick={editHandler} className="btn btn-primary">
             Edit
           </button>
         )}
-        {!editing && (
+        {!editing && userId && userId == item.userId && (
           <button onClick={deleteHandler} className="btn btn-danger">
             Delete
           </button>

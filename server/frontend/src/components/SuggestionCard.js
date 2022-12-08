@@ -12,7 +12,11 @@ const SuggestionCard = ({ movie }) => {
       <div className="card-body">
         <div className="row">
           <div className="col-4">
-            <img src={movie.PosterLink} className="img-thumbnail" alt="..." />
+            <img
+              src={movie.PosterLink}
+              className="img-thumbnail"
+              alt={`Poster for ${movie.Name}`}
+            />
           </div>
           <div className="col-4">
             <ul className="infoList">
@@ -41,7 +45,11 @@ const SuggestionCard = ({ movie }) => {
             </ul>
           </div>
           <div className="col-4">
-            <Rating value={movie.RatingValue} movieId={movie._id} />
+            <Rating
+              value={movie.RatingValue}
+              movieId={movie._id}
+              type="suggestion"
+            />
           </div>
         </div>
       </div>

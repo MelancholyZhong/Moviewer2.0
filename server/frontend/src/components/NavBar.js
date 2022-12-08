@@ -28,11 +28,6 @@ const NavBar = () => {
         </Link>
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link to="./movie" className="nav-link">
-              Movies
-            </Link>
-          </li>
-          <li className="nav-item">
             {isLoggedIn && (
               <Link to={`./dashboard/${userId}`} className="nav-link">
                 Dashboard

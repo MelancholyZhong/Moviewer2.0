@@ -8,7 +8,11 @@ const queryMovieByName = async (movie) => {
   const query = { Name: { $regex: regex, $options: "si" } };
   let foundMovie;
   try {
-    foundMovie = await database.collection("movies").findOne(query);
+    foundMovie = await database
+      .collection("movies")
+      .find(query)
+      .limit(10)
+      .toArray();
   } catch (err) {
     res.status(500).send({ msg: err });
   }
