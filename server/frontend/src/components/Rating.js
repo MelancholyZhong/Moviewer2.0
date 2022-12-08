@@ -59,12 +59,24 @@ const Rating = ({ value, movieId }) => {
       <progress id="file" max="10" value={value}></progress>
       <h3>{value}</h3>
       <br />
+      <br />
+      <br />
       <span>
         {!disableFav && (
           <i
             className="bi bi-box2-heart h2"
             onClick={() => {
               addToList("fav");
+            }}
+          ></i>
+        )}
+      </span>
+      <span>
+        {!disableWish && (
+          <i
+            className="bi bi-calendar-plus h2"
+            onClick={() => {
+              addToList("wish");
             }}
           ></i>
         )}
