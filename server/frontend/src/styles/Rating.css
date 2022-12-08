@@ -5,3 +5,13 @@
 .bi {
   margin: 1rem;
 }
+
+.favButton {
+  border: none;
+  background: none;
+}
+
+.toWatchButton {
+  border: none;
+  background: none;
+}

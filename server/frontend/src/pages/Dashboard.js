@@ -4,6 +4,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import FavoriteList from "../components/FavoriteList";
 import WishList from "../components/WishList";
 import { MovieContext } from "../context/context";
+import "../styles/Dashboard.css";
+
 
 const Dashboard = () => {
   const { userId } = useParams();
@@ -37,16 +39,18 @@ const Dashboard = () => {
   }, [userId]);
 
   // Aaron Leung
+  // How to add space in inline icon
+  // How to make question-circle smaller
   return (
     <div>
-      <h1>Dashboard</h1>
+      <h1>Dashboard <i className="bi bi-question-circle h2" title="Your Favorite list and To Watch List will be shown here.  To start searching for movies, click the Moviewer on the top left."></i></h1>
       <div>
         <div>
-          <h2>Favorites List</h2>
+          <h2> <i className="bi bi-box2-heart h2"></i>Favorites List</h2>
           <FavoriteList list={favList} updateList={fetchList} />
         </div>
         <div>
-          <h2>To Watch List</h2>
+          <h2> <i className="bi bi-calendar-plus h2"></i>To Watch List</h2>
           <WishList list={wishList} updateList={fetchList} />
         </div>
       </div>

@@ -59,6 +59,7 @@ const Rating = ({ value, movieId }) => {
       <progress id="file" max="10" value={value}></progress>
       <h3>{value}</h3>
       <br />
+      <button className="favButton" title="Add movie to Favorite List">
       <br />
       <br />
       <span>
@@ -70,8 +71,8 @@ const Rating = ({ value, movieId }) => {
             }}
           ></i>
         )}
-      </span>
-      <span>
+      </button>
+      <button className="toWatchButton" title="Add movie to To Watch List">
         {!disableWish && (
           <i
             className="bi bi-calendar-plus h2"
@@ -80,6 +81,7 @@ const Rating = ({ value, movieId }) => {
             }}
           ></i>
         )}
+      </button>
       </span>
       <span>
         {!disableWish && (
