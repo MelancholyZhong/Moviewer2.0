@@ -3,7 +3,7 @@ import LoginForm from "../components/LoginForm";
 
 const Login = () => {
   return (
-    <div>
+    <div role="main">
       <LoginForm />
     </div>
   );

@@ -6,8 +6,12 @@
   margin: 1rem;
 }
 
-
 .iconButton {
   border: none;
   background: none;
+}
+
+.iconButton:hover:enabled {
+  color: #ffa31a;
+  background-color: white;
 }

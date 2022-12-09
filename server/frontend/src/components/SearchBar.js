@@ -32,7 +32,9 @@ const SearchBar = ({ cb }) => {
       <div className="card-body">
         <form onSubmit={submitHandler}>
           <label>
+            Search for a movie:
             <input
+              title="Input movie name"
               type="text"
               id="query_value"
               name="value"
@@ -42,6 +44,7 @@ const SearchBar = ({ cb }) => {
               value={movieName}
             />
           </label>
+
           <button type="submit" id="queryBtn" className="btn btn-primary">
             Search
           </button>

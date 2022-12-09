@@ -2,3 +2,23 @@
   justify-self: center;
   width: 50rem;
 }
+
+.btn-primary {
+  color: black;
+  border: none;
+}
+
+.btn-primary:hover {
+  color: black;
+  background-color: #33ffea;
+}
+
+.btn-danger {
+  color: black;
+  border: none;
+}
+
+.btn-danger:hover {
+  color: black;
+  background-color: #fe590d;
+}

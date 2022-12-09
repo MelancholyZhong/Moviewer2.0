@@ -9,7 +9,8 @@ const Movie = () => {
 
   console.log(movieId);
   return (
-    <div>
+    <div role="main">
+      <h1 className="pageTitle">Movie Reviews</h1>
       <MovieCard movieId={movieId} />
       <ReviewBoard movieId={movieId} />
     </div>

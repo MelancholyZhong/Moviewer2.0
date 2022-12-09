@@ -24,7 +24,7 @@ const SuggestionBoard = () => {
   return (
     <div className="card text-center">
       <div className="card-body">
-        <h3 className="card-title">Top 10 Movies</h3>
+        <h2 className="card-title">Top 10 Movies</h2>
         <div>
           {movies.map((item) => {
             return (

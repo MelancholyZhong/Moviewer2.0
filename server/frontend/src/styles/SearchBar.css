@@ -1,11 +1,20 @@
 .card {
   margin: auto;
   width: 40rem;
-  margin-top: 40px;
+  margin-top: 10px;
 }
 
 #queryBtn {
   margin-left: 1rem;
+}
+
+.btn-primary {
+  border: none;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #b36f09;
 }
 
 .errMsg {

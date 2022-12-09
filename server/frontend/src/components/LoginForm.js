@@ -82,7 +82,10 @@ const Login = () => {
             >
               Sign In
             </button>
-            <Link to="/signup"> Sign Up </Link>
+            <Link to="/signup" className="signupLink">
+              {" "}
+              Sign Up{" "}
+            </Link>
           </div>
         </div>
       </form>
