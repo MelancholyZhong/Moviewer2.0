@@ -79,7 +79,7 @@ const Rating = ({ value, movieId, type }) => {
         <button
           disabled={disableFav}
           className="iconButton"
-          title="Add to favarite list"
+          title="Add to Favorites list"
           onClick={() => {
             addToList("fav");
           }}
@@ -91,7 +91,7 @@ const Rating = ({ value, movieId, type }) => {
         <button
           disabled={disableWish}
           className="iconButton"
-          title="Add to wish list"
+          title="Add to To Watch List"
           onClick={() => {
             addToList("wish");
           }}

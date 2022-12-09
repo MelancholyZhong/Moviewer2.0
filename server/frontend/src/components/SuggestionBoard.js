@@ -37,4 +37,5 @@ const SuggestionBoard = () => {
   );
 };
 
+SuggestionBoard.propTypes = {};
 export default SuggestionBoard;
