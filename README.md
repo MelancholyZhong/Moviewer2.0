@@ -4,9 +4,10 @@ Early submission release: https://github.com/MelancholyZhong/Moviewer/releases/t
 
 Movie recommendation application that recommends movies based on the user's Favorite List. Users can search for movies to add to their favorite list and watch list. Searched movies will show details regarding the movie (runtime, genre, rating). Additionally, users can post reviews on movies they have watched.
 
-## Project Objective
+## Project Objective and Overview
 
-Continue to use Node, Node Express, Mongo and HTML5 to build a backend application but use React with hooks to build the frontend.
+The objective of this project is to iterate over our Project 3 website (Moviewer) and make improvements in terms of design, accessibility and usability. In order to make these improvements, we conducted six usability studies and asked participants to perform a series of tasks.  We then asked the participants to rate each of the tasks on a Likert Scale and give comments regarding the ratings they gave.  From the data that we gathered, we then created a list to identify and prioritize which issues to fix.  
+
 
 Before Login:
 ![before-login](https://user-images.githubusercontent.com/97815716/203131365-59c43d0e-d8e6-4cf7-bd6a-a293d9673480.png)
