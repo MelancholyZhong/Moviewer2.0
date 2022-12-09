@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { MovieContext } from "../context/context";
@@ -7,9 +7,9 @@ import "../styles/Rating.css";
 
 const Rating = ({ value, movieId, type }) => {
   const navigate = useNavigate();
-  const { isLoggedIn, userId } = useContext(MovieContext);
-  const [disableFav, setDisableFav] = useState("-fill");
-  const [disableWish, setDisableWish] = useState("-fill");
+  const { isLoggedIn, userId, favList, wishList } = useContext(MovieContext);
+  const [disableFav, setDisableFav] = useState(false);
+  const [disableWish, setDisableWish] = useState(false);
 
   const addToList = async (list) => {
     if (isLoggedIn) {
@@ -27,14 +27,16 @@ const Rating = ({ value, movieId, type }) => {
         });
         if (resRaw.ok) {
           if (list === "fav") {
-            setDisableFav("");
+            setDisableFav(true);
           } else {
-            setDisableWish("");
+            setDisableWish(true);
           }
         }
       } catch (err) {
         console.log(err);
       }
+    } else {
+      navigate("/login");
     }
   };
 
@@ -42,18 +44,29 @@ const Rating = ({ value, movieId, type }) => {
     navigate(`/movie/${movieId}`);
   };
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      if (favList.includes(movieId)) {
+        setDisableFav(true);
+      }
+      if (wishList.includes(movieId)) {
+        setDisableWish(true);
+      }
+    }
+  }, [favList, wishList]);
+
   return (
     <div className="rating">
       <h2>Moviewer Index</h2>
-      <progress id="file" max="10" value={value}></progress>
+      <progress id={movieId} max="10" value={value}></progress>
       <h3>{value}</h3>
       <br />
-      <button className="favButton" title="Add movie to Favorite List">
       <br />
       {type !== "details" && (
         <span>
           <button
             className="iconButton"
+            title="Add review"
             onClick={() => {
               goToMovie();
             }}
@@ -64,22 +77,28 @@ const Rating = ({ value, movieId, type }) => {
       )}
       <span>
         <button
+          disabled={disableFav}
           className="iconButton"
+          title="Add to favarite list"
           onClick={() => {
             addToList("fav");
           }}
         >
-          <i className={`bi bi-box2-heart${disableFav} h2`}></i>
+          <i className={`bi bi-box2-heart${disableFav ? "" : "-fill"} h2`}></i>
         </button>
       </span>
       <span>
         <button
+          disabled={disableWish}
           className="iconButton"
+          title="Add to wish list"
           onClick={() => {
             addToList("wish");
           }}
         >
-          <i className={`bi bi-calendar-plus${disableWish} h2`}></i>
+          <i
+            className={`bi bi-calendar-plus${disableWish ? "" : "-fill"} h2`}
+          ></i>
         </button>
       </span>
     </div>

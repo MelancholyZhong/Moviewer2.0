@@ -48,7 +48,7 @@ body {
 }
 
 .message {
-  color:green;
+  color: green;
 }
 
 .loginButton {
@@ -58,4 +58,8 @@ body {
 label {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.signupLink {
+  color: #000bff;
 }

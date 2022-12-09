@@ -63,7 +63,7 @@ const WishList = ({ list, updateList }) => {
                   onClick={() => {
                     removeMovie(movie._id);
                   }}
-                  className="btn btn-primary btn-rounded btn-block"
+                  className="btn btn-danger btn-rounded btn-block"
                 >
                   Remove
                 </button>

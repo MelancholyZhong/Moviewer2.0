@@ -1,4 +1,4 @@
-// Aaron Leung 
+// Aaron Leung
 // using bcrypt for password encryption
 const bcrypt = require("bcrypt");
 const { getUserPassword } = require("../db_controllers/login-controllers");
@@ -12,7 +12,6 @@ const compare = async (password, hashPassword) => {
 let isLoggedIn = false;
 
 const authenticateUser = async (req, res) => {
-  console.log(req.body);
   const inputPassword = req.body.password;
   let message;
   const email = req.body.email;
@@ -21,7 +20,6 @@ const authenticateUser = async (req, res) => {
   if (user) {
     // check if password match
     const comparisonResult = await compare(inputPassword, user.password);
-    console.log(user);
     if (!comparisonResult) {
       isLoggedIn = false;
       message =
@@ -33,8 +31,7 @@ const authenticateUser = async (req, res) => {
     }
   } else {
     isLoggedIn = false;
-    message =
-      " Account doesn't exist.";
+    message = " Account doesn't exist.";
   }
   res.json({ isLoggedIn: isLoggedIn, message: message });
 };

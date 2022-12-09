@@ -47,7 +47,11 @@ const ReviewBox = ({ movieId, reviewUpdate, userId }) => {
       <div className="card-header">Write a review</div>
       <div className="card-body">
         <form onSubmit={submitHandler}>
+          <label for="movie-review" title="reviewLabel">
+            Write your review here
+          </label>
           <textarea
+            title="Content of review"
             className="form-control"
             id="movie-review"
             rows="4"
@@ -56,7 +60,7 @@ const ReviewBox = ({ movieId, reviewUpdate, userId }) => {
             }}
             value={content}
           ></textarea>
-          <button type="submit" className="btn btn-success">
+          <button type="submit" className="btn btn-primary">
             Post
           </button>
         </form>

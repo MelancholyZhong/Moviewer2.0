@@ -16,13 +16,13 @@ const Signup = () => {
     email: email,
     password: password,
   };
-  
+
   const navigate = useNavigate();
   const submitHandler = async (e) => {
     // Prevent page from re-rendering
     e.preventDefault();
     console.log(data);
-  
+
     try {
       let userData = await fetch("/api/register", {
         method: "POST",
@@ -31,7 +31,7 @@ const Signup = () => {
         },
         body: JSON.stringify(data),
       });
-     
+
       const res = await userData.json();
       console.log(res);
       if (res.isCreated) {
@@ -106,7 +106,10 @@ const Signup = () => {
             >
               Sign Up
             </button>
-            <Link to="/login"> Have an account? </Link>
+            <Link to="/login" className="signupLink">
+              {" "}
+              Have an account?{" "}
+            </Link>
           </div>
         </div>
       </form>
