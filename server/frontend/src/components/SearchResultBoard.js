@@ -21,4 +21,5 @@ const SearchResultBoard = ({ movies }) => {
   );
 };
 
+SearchResultBoard.propTypes = {};
 export default SearchResultBoard;

@@ -59,4 +59,5 @@ const SearchBar = ({ cb }) => {
   );
 };
 
+SearchBar.propTypes = {};
 export default SearchBar;

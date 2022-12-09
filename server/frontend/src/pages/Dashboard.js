@@ -35,16 +35,14 @@ const Dashboard = () => {
     fetchList();
   }, [userId]);
 
-  // Aaron Leung
-  // How to add space in inline icon
-  // How to make question-circle smaller
+  // Aaron Leung 
   return (
     <div role="main">
       <h1>
         Dashboard{" "}
         <i
           className="bi bi-question-circle h2"
-          title="Your Favorite list and To Watch List will be shown here.  To start searching for movies, click the Moviewer on the top left."
+          title="Your Favorites List and To Watch List will be displayed here.  To start searching for movies, click on Moviewer in the top left corner."
         ></i>
       </h1>
       <div>
