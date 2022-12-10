@@ -1,4 +1,4 @@
-# Moviewer 2.0
+# Moviewer 2.0 (https://moviewer2-0.onrender.com/)
 
 Movie application that allows users to browse information about specific movies such as year released, movie synopsis, cast etc.  In addition to general information, each movie profile includes a review section where users can share their thoughts on the movie with other users.  This application also allows users to add movies to their Favorites list and To Watch List, both of which can be viewed in the user's Dashboard.  In the Dashboard, users can manage their Favorites List and To Watch List.    
 
@@ -114,7 +114,7 @@ To start the project, run
 
 - Yao Zhong
 - Aaron Leung
-- Project URL: Coming soon
+- Project URL: https://moviewer2-0.onrender.com/
 
 ## Milestone links:
 
