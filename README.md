@@ -1,5 +1,3 @@
-# Note: Completed and Deployed on 11/22 (for bonus points)
-Early submission release: https://github.com/MelancholyZhong/Moviewer/releases/tag/v2.0
 # Moviewer 2.0
 
 Movie application that allows users to browse information about specific movies such as year released, movie synopsis, cast etc.  In addition to general information, each movie profile includes a review section where users can share their thoughts on the movie with other users.  This application also allows users to add movies to their Favorites list and To Watch List, both of which can be viewed in the user's Dashboard.  In the Dashboard, users can manage their Favorites List and To Watch List.    
