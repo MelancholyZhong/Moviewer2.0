@@ -58,12 +58,17 @@ V2.0:
 ![Review-2 0](https://user-images.githubusercontent.com/97815716/206818047-f4dabe93-7785-4a09-9fbf-f97bd73fb765.png)
 ######
 
-## Color palette and Fonts Choice
+## Color Palette and Fonts Choice
 ### Color Palette
-Our original and main color that we choice for our website was bright orange which we decided to stick to.  When choosing the remaining colors for our color palette we first looked into the complementary color of orange: blue.  While we did like the color blue, we opted for a lighter variant since a darker blue color would clash with our bright orange color.  Next, we chose a warm color (blanchealmond) that would blend well with both colors.
+<img width="1021" alt="color-pallete" src="https://user-images.githubusercontent.com/97815716/206828517-4de0e369-0fe9-4eaa-85a1-f9b99b05a636.png">
+Our original and main color that we chose for our website was bright orange which we decided to stick to.  When choosing the remaining colors for our color palette we first looked into the complementary color of orange: blue.  While we did like the color blue, we opted for a lighter variant since a darker blue color would clash with our bright orange color.  Next, we chose a warm color (blanchealmond) that would blend well with both orange and blue.  These are the main three colors that we used across the pages of our website.  The remaining two colors that we chose were used for our buttons.  The light turqoise color is used for the primary buttons (approval) while the dark red color is used for the remove button (cancel).  Lastly, we used our main color orange for buttons related to the Favorites List and the To Watch List.    
 
 ### Fonts
-...
+The font we used include the following
+1. "Tangerine", serif for page titles and section titles related to movies.  For instance, the home page.
+2. Verdana for the search query (text next to search bar)
+3. Default font for elements in the navbar (Moviewer, Dashboard, Log In/ Log out) as well as the header and subheaders of the Dashboard to complement the style of the icons.
+
 
 ## Getting Started
 
