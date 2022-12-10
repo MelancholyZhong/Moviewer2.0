@@ -127,7 +127,7 @@ To start the project, run
 - Design Document: https://github.com/MelancholyZhong/Moviewer2.0/blob/main/Zhong-Leung-%20design-document.pdf
 - Demo video: Coming soon
 - Slides: https://docs.google.com/presentation/d/1dGrEIgZgw8MIGKASa7Wfx0A393dWFfYCK0gXe4bMF6Q/edit?usp=sharing
-- Usability Study Report: Coming soon
+- Usability Study Report: https://github.com/MelancholyZhong/Moviewer2.0/blob/main/Leung_Zhong_Usability_study_report.pdf
 
 ## Reference Link
 
