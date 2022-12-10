@@ -46,10 +46,10 @@ const Rating = ({ value, movieId, type }) => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      if (favList.includes(movieId)) {
+      if (favList && favList.includes(movieId)) {
         setDisableFav(true);
       }
-      if (wishList.includes(movieId)) {
+      if (wishList && wishList.includes(movieId)) {
         setDisableWish(true);
       }
     }
