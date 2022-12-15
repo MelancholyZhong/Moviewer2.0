@@ -82,3 +82,6 @@ FavoriteList.propTypes = {
 };
 
 export default FavoriteList;
+
+
+// Can consider put different components into different file, with independent css file.
