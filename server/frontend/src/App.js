@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 
 import NavBar from "./components/NavBar";
-
+// Generally very good job! The CURD operations for each collection are super clear for both front end and back end. Also work well in deployed website.
 const App = () => {
   return (
     <div>
