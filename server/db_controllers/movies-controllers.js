@@ -1,9 +1,11 @@
 const mongoUtil = require("../mongoUtil");
 const { ObjectId } = require("mongodb");
-
+// We didn't have a search function, so I learnt a lot by this process.
+// You have very clear structure: passing the query from front end to routes, and a query-service file to get response from DB. 
 const queryMovieByName = async (movie) => {
   const database = mongoUtil.getDB();
   const keyWords = movie.split(" ");
+  // The regex way is powerful. 
   const regex = keyWords.join(".*");
   const query = { Name: { $regex: regex, $options: "si" } };
   let foundMovie;
