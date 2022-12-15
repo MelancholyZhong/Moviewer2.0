@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { MovieContext } from "../context/context";
 
 import "../styles/Rating.css";
-
+// I only see the rating value in data table and I didn't see how do you calculate that. Maybe this functionality could be a future extension. 
 const Rating = ({ value, movieId, type }) => {
   const navigate = useNavigate();
   const { isLoggedIn, userId, favList, wishList } = useContext(MovieContext);
