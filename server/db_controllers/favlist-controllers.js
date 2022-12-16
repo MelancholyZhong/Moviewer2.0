@@ -33,6 +33,8 @@ const getList = async (listName, userId) => {
   }
 };
 
+// Not sure if it will have any effect, but we connect to db and close connection before ending each function.
+
 // Aaron Leung
 const removeMovie = async (listName, userId, movieId) => {
   const database = mongoUtil.getDB();
