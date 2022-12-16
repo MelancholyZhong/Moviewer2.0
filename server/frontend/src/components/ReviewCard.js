@@ -30,6 +30,7 @@ const ReviewCard = ({ item, reviewUpdate, userId }) => {
     e.preventDefault();
     try {
       await fetch(`/api/review/${item._id}`, {
+         // Never saw the PATCH request before. Thank you for bringing new concept. 
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
