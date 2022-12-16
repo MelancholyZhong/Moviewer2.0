@@ -13,6 +13,7 @@ const Home = () => {
     <div role="main">
       <h1 className="pageTitle">Moviewer</h1>
       <SearchBar cb={setSearchResult} />
+      {/* Learnt a way to show conditional results */}
       {searchResult.length !== 0 && <SearchResultBoard movies={searchResult} />}
       {!searchResult.length && <SuggestionBoard />}
     </div>
